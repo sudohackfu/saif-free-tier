@@ -60,7 +60,7 @@ sequenceDiagram
     Daemon-->>Sensor: { status: "AUTHORIZED", nonce: "uuid-v4" }
     Sensor->>Modal: Close Shield Modal
     Sensor->>AI: Release original prompt payload
-    AI-->>Dev: Prompt delivered; AI streaming begins
+    AI-->>Dev: Prompt delivered (AI streaming begins)
 ```
 
 ### How Override Works
