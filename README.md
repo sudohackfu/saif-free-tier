@@ -12,6 +12,10 @@
 
 [**Download SAIF-Setup.exe (v1.0.0 Beta)**](releases/SAIF-Setup.exe) • [**User Guide**](docs/USER_GUIDE.md) • [**Technical Whitepaper**](docs/BENCHMARK.md) • [**Rule Catalog**](docs/RULE_CATALOG.md)
 
+<p align="center">
+  <img src="docs/screenshots/hero_banner.jpg" alt="SAIF Zero-Trust Semantic AI Firewall" width="100%" style="max-width: 860px; border-radius: 12px; border: 1px solid #334155; box-shadow: 0 12px 36px rgba(0,0,0,0.5);" />
+</p>
+
 ---
 
 ## Visual Showcase: Protection in Action
@@ -83,39 +87,13 @@ Traditional network firewalls, web proxies, and cloud DLP gateways fail on moder
 
 SAIF executes **directly on your workstation**, validating prompt payloads in sub-millisecond time on-device via a native Go security daemon and local ONNX neural cascades:
 
-```mermaid
-flowchart TD
-    subgraph Surface["Workstation Interception Surface"]
-        A["Developer Input"] --> B{"Interception Layer"}
-        B -->|AI Chat Composer| C1["Front-Door DOM Trap"]
-        B -->|Jira / GitHub / Form| C2["Editable Host Interceptor"]
-        B -->|Address Bar Search| C3["Omnibox Navigation Guard"]
-        B -->|Clipboard Paste| C4["In-Place Paste Sanitizer"]
-    end
-
-    subgraph Daemon["SAIF On-Device Engine (:18080)"]
-        D["Pre-Flight Payload Normalizer"]
-        E1["Stage 1: Recursive De-Obfuscation<br/><i>(Base64, Hex, Leetspeak, NFKC)</i>"]
-        E2["Stage 2: Shannon Entropy & Directives<br/><i>(H &ge; 3.2, // saif:ignore)</i>"]
-        E3["Stage 3: Mathematical Normalizers<br/><i>(Luhn Mod-10, ISO 7064 Mod-97, Mod-23)</i>"]
-        E4["Stage 4: ONNX Model Cascades<br/><i>(SAIF Light &bull; Neural &bull; Deep Neural)</i>"]
-        
-        D --> E1 --> E2 --> E3 --> E4
-    end
-
-    C1 & C2 & C3 & C4 -->|Local Loopback IPC| D
-
-    E4 -->|Verdict: Clean| PASS["Permit Egress (&lt;15ms)<br/>Transits to AI Service"]
-    E4 -->|Verdict: Block| BLOCK["In-Page Security Shield<br/>Local Redaction or Override"]
-    C3 -->|Navigation Block| OMNI["Omnibox Redirect<br/>blocked.html Safe Page"]
-
-    classDef pass fill:#10b98120,stroke:#10b981,stroke-width:2px,color:#34d399;
-    classDef block fill:#ef444420,stroke:#ef4444,stroke-width:2px,color:#f87171;
-    classDef engine fill:#3b82f615,stroke:#3b82f6,stroke-width:1px,color:#93c5fd;
-    class PASS pass;
-    class BLOCK,OMNI block;
-    class E1,E2,E3,E4 engine;
-```
+<p align="center">
+  <a href="docs/screenshots/architecture_infographic.png" title="Click to view full architecture diagram">
+    <img src="docs/screenshots/architecture_infographic.png" alt="SAIF Architecture & Master Signal Flow" width="100%" style="max-width: 860px; border-radius: 10px; border: 1px solid #334155; box-shadow: 0 8px 24px rgba(0,0,0,0.4);" />
+  </a>
+  <br>
+  <sub><em>(Click to view high-resolution architecture diagram)</em></sub>
+</p>
 
 ---
 
@@ -144,34 +122,13 @@ Rather than relying on brittle, easily bypassed pattern lists, SAIF employs a mu
   * Unicode NFKC canonicalization and homoglyph mapping.
   * URL percent-encoding resolution and template literal unwrapping.
 
-```mermaid
-flowchart LR
-    RAW["Raw Outgoing Text"] --> DEC["Recursive Unpacker"]
-    
-    subgraph Deobfuscation["Multi-Stage Normalization"]
-        DEC --> B64["Base64 & Hex Decoding"]
-        B64 --> LEET["Leetspeak Transliteration"]
-        LEET --> NFKC["Unicode NFKC & Homoglyphs"]
-        NFKC --> AST["Template Literal Unwrapping"]
-    end
-
-    AST --> FILTER{"Evaluation Gate"}
-
-    subgraph Verifiers["High-Fidelity Verifiers"]
-        FILTER --> MATH["Mathematical Checksums<br/><i>(Luhn, ISO 7064, Mod-23)</i>"]
-        FILTER --> ENTROPY["Shannon Entropy Gate<br/><i>(H &ge; 3.2 Key Extraction)</i>"]
-        FILTER --> DIRECTIVE["Inline Directives<br/><i>(// saif:ignore[rule])</i>"]
-    end
-
-    MATH & ENTROPY & DIRECTIVE --> VERDICT{"Deterministic Verdict"}
-    VERDICT -->|Violation| BLK["Block & Local Redaction"]
-    VERDICT -->|Clean| SEM["Semantic Cascade Router"]
-
-    classDef norm fill:#6366f115,stroke:#6366f1,stroke-width:1px;
-    classDef check fill:#3b82f615,stroke:#3b82f6,stroke-width:1px;
-    class Deobfuscation norm;
-    class Verifiers check;
-```
+<p align="center">
+  <a href="docs/screenshots/dlp_pipeline_infographic.png" title="Click to view full DLP pipeline">
+    <img src="docs/screenshots/dlp_pipeline_infographic.png" alt="SAIF Combinatorial DLP Pipeline" width="100%" style="max-width: 840px; border-radius: 10px; border: 1px solid #334155; box-shadow: 0 8px 24px rgba(0,0,0,0.4);" />
+  </a>
+  <br>
+  <sub><em>(Click to view high-resolution pipeline diagram)</em></sub>
+</p>
 
 ---
 
