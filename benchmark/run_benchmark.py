@@ -193,13 +193,13 @@ def main():
 
     agent_ver = health.get("version", "1.0.0")
     active_profile = health.get("engineProfile", "light").upper()
-    print(f"\n✓ SAIF Agent Connected: version {agent_ver} (Profile: {active_profile}) at {args.url}")
+    print(f"\n[OK] SAIF Agent Connected: version {agent_ver} (Profile: {active_profile}) at {args.url}")
 
     # 2. Model Profile Switch (Optional)
     if args.model:
         print(f"Switching agent profile to: {args.model}...")
         if switch_model_profile(args.url, args.model):
-            print(f"✓ Model profile switched to {args.model}.")
+            print(f"[OK] Model profile switched to {args.model}.")
             active_profile = args.model.upper()
         else:
             print(f"Notice: Profile switch request completed. Running against active profile {active_profile}.")
@@ -212,7 +212,7 @@ def main():
         sys.exit(1)
 
     total_vectors = len(vectors)
-    print(f"✓ Successfully loaded {total_vectors:,} test vectors.")
+    print(f"[OK] Successfully loaded {total_vectors:,} test vectors.")
     print(f"Starting concurrent evaluation across {args.workers} worker threads...\n")
 
     # 4. Execute Benchmark
@@ -315,24 +315,24 @@ def main():
     print("=" * 72)
     print("   BENCHMARK EVALUATION RESULTS")
     print("=" * 72)
-    print(f"  • Total Vectors Evaluated:    {total_vectors:,} in {elapsed:.2f}s ({qps:.1f} req/s)")
-    print(f"  • Overall Accuracy:           {accuracy_pct:.2f}% ({correct:,}/{total_vectors:,})")
-    print(f"  • Adversarial Catch Rate:     {catch_rate_pct:.2f}% ({caught:,}/{threat_total:,})")
-    print(f"  • Control Specificity:        {specificity_pct:.2f}% ({benign_allowed:,}/{benign_total:,})")
-    print(f"  • False Positive Rate (FPR):  {fpr_pct:.2f}% ({benign_fp:,}/{benign_total:,})")
-    print(f"  • Unmitigated Misses:         {misses}")
-    print(f"  • Latencies:                  P50={pctiles['p50']}ms | P95={pctiles['p95']}ms | P99={pctiles['p99']}ms")
+    print(f"  - Total Vectors Evaluated:    {total_vectors:,} in {elapsed:.2f}s ({qps:.1f} req/s)")
+    print(f"  - Overall Accuracy:           {accuracy_pct:.2f}% ({correct:,}/{total_vectors:,})")
+    print(f"  - Adversarial Catch Rate:     {catch_rate_pct:.2f}% ({caught:,}/{threat_total:,})")
+    print(f"  - Control Specificity:        {specificity_pct:.2f}% ({benign_allowed:,}/{benign_total:,})")
+    print(f"  - False Positive Rate (FPR):  {fpr_pct:.2f}% ({benign_fp:,}/{benign_total:,})")
+    print(f"  - Unmitigated Misses:         {misses}")
+    print(f"  - Latencies:                  P50={pctiles['p50']}ms | P95={pctiles['p95']}ms | P99={pctiles['p99']}ms")
     print("=" * 72)
 
     # 7. Write Artifacts
     report_md = generate_markdown_report(metrics, args.suite, active_profile)
     with open(args.output_report, "w", encoding="utf-8") as f:
         f.write(report_md)
-    print(f"✓ Summary report written to: {args.output_report}")
+    print(f"[OK] Summary report written to: {args.output_report}")
 
     with open(args.output_json, "w", encoding="utf-8") as f:
         json.dump(metrics, f, indent=2)
-    print(f"✓ Machine-readable results written to: {args.output_json}\n")
+    print(f"[OK] Machine-readable results written to: {args.output_json}\n")
 
 if __name__ == "__main__":
     main()
