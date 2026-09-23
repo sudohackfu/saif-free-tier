@@ -24,13 +24,31 @@ When SAIF intercepts an outbound prompt, an in-page shield modal appears over th
 ### Override Sequence Workflow
 
 ```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'darkMode': true,
+    'background': '#09090b',
+    'actorBkg': '#18181b',
+    'actorBorder': '#3b82f6',
+    'actorTextColor': '#60a5fa',
+    'actorLineColor': '#38bdf8',
+    'signalColor': '#38bdf8',
+    'signalTextColor': '#e4e4e7',
+    'noteBkgColor': '#18181b',
+    'noteBorderColor': '#3b82f6',
+    'noteTextColor': '#f4f4f5',
+    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif',
+    'fontSize': '13px'
+  }
+}}%%
 sequenceDiagram
     autonumber
-    actor Dev as Developer
-    participant Modal as In-Page Shield Modal
-    participant Sensor as Extension Interceptor
-    participant Daemon as saif.exe (Local Daemon)
-    participant AI as AI Web App (Claude/ChatGPT)
+    actor Dev as 👨‍💻 Developer
+    participant Modal as 🛡️ In-Page Shield Modal
+    participant Sensor as 🧩 Extension Interceptor
+    participant Daemon as ⚡ saif.exe (Local Daemon)
+    participant AI as ☁️ AI Web App (Claude/ChatGPT)
 
     Note over Dev,Modal: Sensitive Token Intercepted & Blocked
     Modal-->>Dev: Displays Block Card ("AWS Secret Key Detected")

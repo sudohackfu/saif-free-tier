@@ -33,35 +33,59 @@ SAIF deploys a dual-tier architecture operating in workstation user space:
 - **Browser Sensor**: A Manifest V3 extension that intercepts outbound prompt payloads before network egress, enforcing zero-trust pre-flight authorization.
 
 ```mermaid
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'darkMode': true,
+    'background': '#09090b',
+    'mainBkg': '#121217',
+    'nodeBorder': '#27272a',
+    'textColor': '#f4f4f5',
+    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif',
+    'fontSize': '13px',
+    'lineColor': '#38bdf8'
+  }
+}}%%
 flowchart TD
-    UserPrompt["Developer Enters Prompt in Web AI UI<br/>(ChatGPT, Claude, Gemini, DeepSeek)"]
-    Sensor["Browser Extension Interceptor<br/>(Main-World DOM Hook)"]
+    UserPrompt["Developer Enters Prompt in Web AI UI<br/><b>ChatGPT, Claude, Gemini, DeepSeek</b>"]:::blueNode
+    Sensor["Browser Extension Interceptor<br/><b>Main-World DOM Hook</b>"]:::cyanNode
     UserPrompt --> Sensor
     
-    Sensor --> Preflight["Pre-Flight POST /evaluate<br/>(http://127.0.0.1:18080)"]
+    Sensor --> Preflight["Pre-Flight POST /evaluate<br/><b>http://127.0.0.1:44321</b>"]:::purpleNode
     
-    subgraph WorkstationDaemon["SAIF Workstation Daemon (saif.exe)"]
-        Preproc["Syntactic Normalizer & Unfolder<br/>•- Base64 & Hex Decoding<br/>•- Leetspeak & Homoglyphs<br/>•- AST Template Unrolling"]
+    subgraph WorkstationDaemon ["⚡ SAIF Workstation Daemon (saif.exe)"]
+        Preproc["Syntactic Normalizer & Unfolder<br/>• Base64 & Hex Decoding<br/>• Leetspeak & Homoglyphs<br/>• AST Template Unrolling"]:::amberNode
         Preflight --> Preproc
         
-        FastPath{"Deterministic Triage<br/>•- Presidio DLP Patterns<br/>•- Shannon Entropy Filter<br/>•- Algorithmic Checksums"}
+        FastPath{"Deterministic Triage<br/>• Presidio DLP Patterns<br/>• Shannon Entropy Filter<br/>• Algorithmic Checksums"}:::cyanNode
         Preproc --> FastPath
         
-        FastPath -->|Definite Secret / PII| BlockVerdict["Verdict: BLOCK (<1ms)"]
-        FastPath -->|Ambiguous or Context-Dependent| NeuralCascade["ONNX Neural Semantic Engine"]
+        FastPath -->|"Definite Secret / PII"| BlockVerdict["Verdict: BLOCK (<1ms)"]:::redNode
+        FastPath -->|"Ambiguous or Context-Dependent"| NeuralCascade["ONNX Neural Semantic Engine"]:::purpleNode
         
-        subgraph Models["Selected Production Model Profile"]
-            M1["SAIF Light<br/>(~35MB RAM, ~13ms P50)"]
-            M2["SAIF Neural<br/>(~146MB RAM, ~4.6ms P50, 512 Tokens)"]
-            M3["SAIF Deep Neural<br/>(~396MB RAM, ~4.8ms P50, 8,192 Tokens)"]
+        subgraph Models ["Selected Production Model Profile"]
+            M1["SAIF Light<br/><b>~35MB RAM, ~13ms P50</b>"]:::slateNode
+            M2["SAIF Neural<br/><b>~146MB RAM, ~4.6ms P50</b>"]:::purpleNode
+            M3["SAIF Deep Neural<br/><b>~396MB RAM, ~4.8ms P50</b>"]:::purpleNode
         end
         NeuralCascade --> Models
-        Models --> CentroidMatch["Centroid Cosine Triage<br/>(Decision Boundary Corridor)"]
-        CentroidMatch --> FinalVerdict{"Policy Evaluation"}
+        Models --> CentroidMatch["Centroid Cosine Triage<br/><b>Decision Boundary Corridor</b>"]:::greenNode
+        CentroidMatch --> FinalVerdict{"Policy Evaluation"}:::blueNode
     end
     
-    FinalVerdict -->|Violation Found| ModalBlock["Sensor Blocks Egress & Displays In-Page Shield Modal"]
-    FinalVerdict -->|Clean| SafePass["Prompt Allowed to Transit Directly to LLM"]
+    FinalVerdict -->|"Violation Found"| ModalBlock["Sensor Blocks Egress & Displays In-Page Shield Modal"]:::redNode
+    FinalVerdict -->|"Clean"| SafePass["Prompt Allowed to Transit Directly to LLM"]:::greenNode
+
+    classDef blueNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#60a5fa,rx:8px,ry:8px;
+    classDef cyanNode fill:#083344,stroke:#06b6d4,stroke-width:2px,color:#22d3ee,rx:8px,ry:8px;
+    classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399,rx:8px,ry:8px;
+    classDef redNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#f87171,rx:8px,ry:8px;
+    classDef amberNode fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fbbf24,rx:8px,ry:8px;
+    classDef purpleNode fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#c084fc,rx:8px,ry:8px;
+    classDef slateNode fill:#18181b,stroke:#3f3f46,stroke-width:1.5px,color:#d4d4d8,rx:8px,ry:8px;
+
+    style WorkstationDaemon fill:#0f1117,stroke:#8b5cf6,stroke-width:1.5px,color:#c084fc;
+    style Models fill:#09090b,stroke:#27272a,stroke-width:1px,color:#a1a1aa;
 ```
 
 ### The Three Production Models
