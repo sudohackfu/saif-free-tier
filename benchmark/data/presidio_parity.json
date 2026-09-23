@@ -1,0 +1,2102 @@
+[
+  {
+    "id": "PARITY-ATTACK-001",
+    "prompt": "Please verify employee Spanish national DNI: 95822412L for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-002",
+    "prompt": "Please verify employee Spanish national DNI: 24942603T for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-003",
+    "prompt": "Please verify employee Spanish national DNI: 13356886G for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-004",
+    "prompt": "Please verify employee Spanish national DNI: 46913810C for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-005",
+    "prompt": "Please verify employee Spanish national DNI: 42868828W for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-006",
+    "prompt": "Please verify employee Spanish national DNI: 39958838H for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-007",
+    "prompt": "Please verify employee Spanish national DNI: 28728463Z for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-008",
+    "prompt": "Please verify employee Spanish national DNI: 23756669S for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-009",
+    "prompt": "Please verify employee Spanish national DNI: 83197857A for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-010",
+    "prompt": "Please verify employee Spanish national DNI: 21668732H for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-011",
+    "prompt": "Please verify employee Spanish national DNI: 89254563G for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-012",
+    "prompt": "Please verify employee Spanish national DNI: 66629388K for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-013",
+    "prompt": "Please verify employee Spanish national DNI: 14265799A for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-014",
+    "prompt": "Please verify employee Spanish national DNI: 13999315C for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-015",
+    "prompt": "Please verify employee Spanish national DNI: 22575562G for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-016",
+    "prompt": "Please verify employee Spanish national DNI: 39345092G for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-017",
+    "prompt": "Please verify employee Spanish national DNI: 41227216S for payroll processing.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-018",
+    "prompt": "Foreign consultant tax registration NIE is Z1445199E, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-019",
+    "prompt": "Foreign consultant tax registration NIE is Z4335942X, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-020",
+    "prompt": "Foreign consultant tax registration NIE is Z8038374V, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-021",
+    "prompt": "Foreign consultant tax registration NIE is X8536477G, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-022",
+    "prompt": "Foreign consultant tax registration NIE is Z5667265R, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-023",
+    "prompt": "Foreign consultant tax registration NIE is X3678638H, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-024",
+    "prompt": "Foreign consultant tax registration NIE is Z8090293W, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-025",
+    "prompt": "Foreign consultant tax registration NIE is Y5661907B, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-026",
+    "prompt": "Foreign consultant tax registration NIE is X4612365Z, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-027",
+    "prompt": "Foreign consultant tax registration NIE is Y2714803N, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-028",
+    "prompt": "Foreign consultant tax registration NIE is X7374122T, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-029",
+    "prompt": "Foreign consultant tax registration NIE is X7022674S, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-030",
+    "prompt": "Foreign consultant tax registration NIE is Y5437923R, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-031",
+    "prompt": "Foreign consultant tax registration NIE is X8707870R, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-032",
+    "prompt": "Foreign consultant tax registration NIE is Z3094235G, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-033",
+    "prompt": "Foreign consultant tax registration NIE is Y2322047G, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-034",
+    "prompt": "Foreign consultant tax registration NIE is Z5918715S, apply withholding.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-035",
+    "prompt": "Fattura elettronica issued to Codice Fiscale TOUOQA64E03H987W in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-036",
+    "prompt": "Fattura elettronica issued to Codice Fiscale CFPHHE67T21F723G in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-037",
+    "prompt": "Fattura elettronica issued to Codice Fiscale PNFLFV94P08Z432H in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-038",
+    "prompt": "Fattura elettronica issued to Codice Fiscale TSEAGF63R23L317C in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-039",
+    "prompt": "Fattura elettronica issued to Codice Fiscale PIVLFF85P09Z698K in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-040",
+    "prompt": "Fattura elettronica issued to Codice Fiscale IOHZCM98A28F256R in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-041",
+    "prompt": "Fattura elettronica issued to Codice Fiscale PSIBIZ83E18F796A in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-042",
+    "prompt": "Fattura elettronica issued to Codice Fiscale RQNFPC77C15F839P in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-043",
+    "prompt": "Fattura elettronica issued to Codice Fiscale UFMDVU69T17R303D in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-044",
+    "prompt": "Fattura elettronica issued to Codice Fiscale DSNSNA70M01F471J in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-045",
+    "prompt": "Fattura elettronica issued to Codice Fiscale UTGBUV55M27F878L in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-046",
+    "prompt": "Fattura elettronica issued to Codice Fiscale NCPVDN88L07R873I in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-047",
+    "prompt": "Fattura elettronica issued to Codice Fiscale REGZPL83M04H330D in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-048",
+    "prompt": "Fattura elettronica issued to Codice Fiscale BANOAQ53D03F980M in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-049",
+    "prompt": "Fattura elettronica issued to Codice Fiscale GMFMNR86R16H903R in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-050",
+    "prompt": "Fattura elettronica issued to Codice Fiscale LIBPHI96A22Z761F in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-051",
+    "prompt": "Fattura elettronica issued to Codice Fiscale CIHUFD78C14H385L in Milan.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-052",
+    "prompt": "TDS certificate issued against Indian PAN MWBAD1828U for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-053",
+    "prompt": "TDS certificate issued against Indian PAN ZVZCF7658P for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-054",
+    "prompt": "TDS certificate issued against Indian PAN MWXCM1035M for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-055",
+    "prompt": "TDS certificate issued against Indian PAN GULFW8973E for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-056",
+    "prompt": "TDS certificate issued against Indian PAN EFBTR1998X for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-057",
+    "prompt": "TDS certificate issued against Indian PAN IBMAF1931Q for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-058",
+    "prompt": "TDS certificate issued against Indian PAN CEPTH7615D for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-059",
+    "prompt": "TDS certificate issued against Indian PAN YOPPT2343N for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-060",
+    "prompt": "TDS certificate issued against Indian PAN ROIHG6147H for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-061",
+    "prompt": "TDS certificate issued against Indian PAN GDQFK2188A for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-062",
+    "prompt": "TDS certificate issued against Indian PAN LZZPR4492Q for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-063",
+    "prompt": "TDS certificate issued against Indian PAN GYWCL5669F for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-064",
+    "prompt": "TDS certificate issued against Indian PAN LOHTQ1128V for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-065",
+    "prompt": "TDS certificate issued against Indian PAN VHRCI2891D for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-066",
+    "prompt": "TDS certificate issued against Indian PAN TEHCW6617G for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-067",
+    "prompt": "TDS certificate issued against Indian PAN RWNHB2512U for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-068",
+    "prompt": "TDS certificate issued against Indian PAN LHACU5291F for dividend income.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-069",
+    "prompt": "KYC identity document Aadhaar UID: 910415310466 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-070",
+    "prompt": "KYC identity document Aadhaar UID: 333730772181 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-071",
+    "prompt": "KYC identity document Aadhaar UID: 815473743389 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-072",
+    "prompt": "KYC identity document Aadhaar UID: 625367789506 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-073",
+    "prompt": "KYC identity document Aadhaar UID: 538644572109 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-074",
+    "prompt": "KYC identity document Aadhaar UID: 749938085655 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-075",
+    "prompt": "KYC identity document Aadhaar UID: 444822380424 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-076",
+    "prompt": "KYC identity document Aadhaar UID: 811064566348 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-077",
+    "prompt": "KYC identity document Aadhaar UID: 763608374747 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-078",
+    "prompt": "KYC identity document Aadhaar UID: 457592344711 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-079",
+    "prompt": "KYC identity document Aadhaar UID: 289825972393 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-080",
+    "prompt": "KYC identity document Aadhaar UID: 592396881781 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-081",
+    "prompt": "KYC identity document Aadhaar UID: 719775151943 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-082",
+    "prompt": "KYC identity document Aadhaar UID: 238348209543 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-083",
+    "prompt": "KYC identity document Aadhaar UID: 867048416442 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-084",
+    "prompt": "KYC identity document Aadhaar UID: 364938000240 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-085",
+    "prompt": "KYC identity document Aadhaar UID: 811185434083 submitted for verification.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-086",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 261104313911267 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-087",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 272125054662138 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-088",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 174103436004646 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-089",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 250097880373752 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-090",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 173071878094377 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-091",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 289069496812813 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-092",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 282059551833526 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-093",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 294058023019785 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-094",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 292073273058393 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-095",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 275091041129462 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-096",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 177108777033046 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-097",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 278083762348588 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-098",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 192024662768059 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-099",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 255044933082661 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-100",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 159011535048739 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-101",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 179079068920051 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-102",
+    "prompt": "Num\u00e9ro de s\u00e9curit\u00e9 sociale (NIR): 281074125167223 for healthcare reimbursement.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-103",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #AY1632872.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-104",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #AR3172789.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-105",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #FY7986877.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-106",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #BX7743481.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-107",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #MU3471430.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-108",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #FK5812234.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-109",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #MW2316657.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-110",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #MN0366903.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-111",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #MP0546688.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-112",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #BP3467063.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-113",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #FV6272986.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-114",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #AM9901629.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-115",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #MF0465371.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-116",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #FK6464173.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-117",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #AX8053100.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-118",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #AH3092323.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-119",
+    "prompt": "Prescription authorization for Schedule II medication under DEA #MV1937450.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-120",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 26-2921542.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-121",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 26-6218367.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-122",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 20-1430812.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-123",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 45-7296605.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-124",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 65-4327421.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-125",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 20-5074336.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-126",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 20-6059717.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-127",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 20-1689025.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-128",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 52-9937982.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-129",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 65-7217147.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-130",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 20-9488613.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-131",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 52-1212267.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-132",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 65-9224219.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-133",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 20-8273315.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-134",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 52-8713146.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-135",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 26-8306261.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-136",
+    "prompt": "W-9 corporate tax filing for vendor with Federal EIN 26-9753457.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-137",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: 3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-138",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3 immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-139",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4 immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-140",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4 immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-141",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-142",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: 3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-143",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: 1BoatSLRHtKNngkdXEeobR76b53LETtpyT immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-144",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: 1FvzCLoTPGANNjWoUo6jUGuAG3wg1w4YjR immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-145",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: 12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-146",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: 3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-147",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4 immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-148",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: 1FvzCLoTPGANNjWoUo6jUGuAG3wg1w4YjR immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-149",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4 immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-150",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-151",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: 1BoatSLRHtKNngkdXEeobR76b53LETtpyT immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-152",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-153",
+    "prompt": "Send executive advisory fee of 2.5 BTC to wallet address: bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kv8f3t4 immediately.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-154",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xC44B7Df60E1faAfeaB24f6cab9A7f55242bA44af on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-155",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xFb624530b6Fcf2DaDca941EaC81d13c6F2AdB4b9 on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-156",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0x9CF6ddAE44e33109d65ff9fEBdeE9beDC136Ac62 on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-157",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xffEba109752FCcEFe50AaeE3cda277eC7f6EBca6 on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-158",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0x7F8bFeb947AdA4cE9f2Fd53cc2FEa2Cafb6CF5c8 on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-159",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xEbDD6B9EbC66cFa3b7cba74fc5B0AfB8eCFa0bcD on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-160",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xD9baf9e3aF7feCCC86fAD01dEFA92dD9fD1B683b on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-161",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xcB31Dd5E3a550BDe397ce95C48a5ccF6Fe6cfA1d on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-162",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xaD6Bd7edefeCdDe69cA16A32bFbEC5CaBA72F3FC on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-163",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xfFFB8B0baeecCE250DcE41CE683E6a2D29eAE9A3 on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-164",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0x92a8E089EC2fbF7842Caeed0B52c1A44D73D0C32 on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-165",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0x53e00B5731AbAaBb2bE0BDbaF1a8faE11d16dc7F on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-166",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xb9d2fCeAf49579929e83E1C22ABccc727eADfFd7 on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-167",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xc4e42C8AcBCFCde0EC53f670Dc83d0A4978fBc11 on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-168",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0x3de5ea96A296eae08d0643570A38fbCB1C00ECcc on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-169",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xf9207BdCE1C5cb86773b2bD7ACB534dAe3BaAA9E on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-170",
+    "prompt": "Treasury payout in USDC sent to contract owner address: 0xcddDd319661b691C1DCdbacBD9Be7a312D7fb359 on mainnet.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-171",
+    "prompt": "Reach the executive director on direct confidential line +61662714327.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-172",
+    "prompt": "Reach the executive director on direct confidential line +65754773573.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-173",
+    "prompt": "Reach the executive director on direct confidential line +49490732457.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-174",
+    "prompt": "Reach the executive director on direct confidential line +39403754671.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-175",
+    "prompt": "Reach the executive director on direct confidential line +91538912794.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-176",
+    "prompt": "Reach the executive director on direct confidential line +39828960875.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-177",
+    "prompt": "Reach the executive director on direct confidential line +81156227043.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-178",
+    "prompt": "Reach the executive director on direct confidential line +39170772317.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-179",
+    "prompt": "Reach the executive director on direct confidential line +39201474984.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-180",
+    "prompt": "Reach the executive director on direct confidential line +65828404274.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-181",
+    "prompt": "Reach the executive director on direct confidential line +91405100495.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-182",
+    "prompt": "Reach the executive director on direct confidential line +34877103091.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-183",
+    "prompt": "Reach the executive director on direct confidential line +81261462131.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-184",
+    "prompt": "Reach the executive director on direct confidential line +39187512088.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-185",
+    "prompt": "Reach the executive director on direct confidential line +81812548074.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-186",
+    "prompt": "Reach the executive director on direct confidential line +49475617211.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-187",
+    "prompt": "Reach the executive director on direct confidential line +34804433388.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-188",
+    "prompt": "Border clearance optical passport scan data: P<UTOSKPYIJ<<UVRVT<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-189",
+    "prompt": "Border clearance optical passport scan data: P<UTOMFDCVC<<UVWAI<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-190",
+    "prompt": "Border clearance optical passport scan data: P<UTOKRGLHT<<LNIVM<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-191",
+    "prompt": "Border clearance optical passport scan data: P<UTOVUDGQW<<OCVWH<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-192",
+    "prompt": "Border clearance optical passport scan data: P<UTOABNGZJ<<AYVQU<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-193",
+    "prompt": "Border clearance optical passport scan data: P<UTOGVOSNC<<HHBKU<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-194",
+    "prompt": "Border clearance optical passport scan data: P<UTOPGKRCZ<<BNNZO<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-195",
+    "prompt": "Border clearance optical passport scan data: P<UTOQUTIBO<<VEUMS<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-196",
+    "prompt": "Border clearance optical passport scan data: P<UTOYNZOGT<<EJUWI<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-197",
+    "prompt": "Border clearance optical passport scan data: P<UTOYNUSCP<<VOICR<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-198",
+    "prompt": "Border clearance optical passport scan data: P<UTOHZYBQJ<<URYDP<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-199",
+    "prompt": "Border clearance optical passport scan data: P<UTOYJTONK<<QGCTM<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-ATTACK-200",
+    "prompt": "Border clearance optical passport scan data: P<UTODWLXLC<<RVIJB<<<<<<<<<<<<<<<<<<<<<<<<<<<",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-001",
+    "prompt": "const sha256_hash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855';",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-002",
+    "prompt": "git commit -m 'refactor(auth): update session token ttl to 15m' hash: 7a8b9c0d1e2f",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-003",
+    "prompt": "SELECT user_id, email, created_at FROM corporate_accounts WHERE status = 'active';",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-004",
+    "prompt": "docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=devpassword postgres:16",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-005",
+    "prompt": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nETag: W/'123456789abcdef'",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-006",
+    "prompt": "public void configureSecurity(HttpSecurity http) throws Exception { http.csrf().disable(); }",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-007",
+    "prompt": "Spanish DNI format is 8 digits followed by a letter, for example: 00000000T in documentation.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-008",
+    "prompt": "A valid Italian Codice Fiscale consists of 16 characters matching the cadastral municipality code.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-009",
+    "prompt": "Bitcoin testnet addresses start with m, n, or tb1, unlike mainnet legacy P2PKH addresses.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-010",
+    "prompt": "Ethereum smart contract ABI definition: function transfer(address to, uint256 amount) returns (bool);",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-011",
+    "prompt": "For customer support dial our toll free line 1-800-555-0199 during regular business hours.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-012",
+    "prompt": "RFC 4122 Nil UUID specification: 00000000-0000-0000-0000-000000000000 is used as a sentinel.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-013",
+    "prompt": "Calculate the mathematical modulus of 23: def check_dni(n): return 'TRWAGMYFPDXBNJZSQVHLCKE'[n % 23]",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-014",
+    "prompt": "US Employer Identification Numbers are issued by the IRS for business tax administration.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-015",
+    "prompt": "The Verhoeff algorithm uses dihedral group D5 multiplication to detect all single transposition errors.",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-016",
+    "prompt": "const sha256_hash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'; // index fixture ref 15",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-017",
+    "prompt": "git commit -m 'refactor(auth): update session token ttl to 15m' hash: 7a8b9c0d1e2f // index fixture ref 16",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-018",
+    "prompt": "SELECT user_id, email, created_at FROM corporate_accounts WHERE status = 'active'; // index fixture ref 17",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-019",
+    "prompt": "docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=devpassword postgres:16 // index fixture ref 18",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-020",
+    "prompt": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nETag: W/'123456789abcdef' // index fixture ref 19",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-021",
+    "prompt": "public void configureSecurity(HttpSecurity http) throws Exception { http.csrf().disable(); } // index fixture ref 20",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-022",
+    "prompt": "Spanish DNI format is 8 digits followed by a letter, for example: 00000000T in documentation. // index fixture ref 21",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-023",
+    "prompt": "A valid Italian Codice Fiscale consists of 16 characters matching the cadastral municipality code. // index fixture ref 22",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-024",
+    "prompt": "Bitcoin testnet addresses start with m, n, or tb1, unlike mainnet legacy P2PKH addresses. // index fixture ref 23",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-025",
+    "prompt": "Ethereum smart contract ABI definition: function transfer(address to, uint256 amount) returns (bool); // index fixture ref 24",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-026",
+    "prompt": "For customer support dial our toll free line 1-800-555-0199 during regular business hours. // index fixture ref 25",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-027",
+    "prompt": "RFC 4122 Nil UUID specification: 00000000-0000-0000-0000-000000000000 is used as a sentinel. // index fixture ref 26",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-028",
+    "prompt": "Calculate the mathematical modulus of 23: def check_dni(n): return 'TRWAGMYFPDXBNJZSQVHLCKE'[n % 23] // index fixture ref 27",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-029",
+    "prompt": "US Employer Identification Numbers are issued by the IRS for business tax administration. // index fixture ref 28",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-030",
+    "prompt": "The Verhoeff algorithm uses dihedral group D5 multiplication to detect all single transposition errors. // index fixture ref 29",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-031",
+    "prompt": "const sha256_hash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'; // index fixture ref 30",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-032",
+    "prompt": "git commit -m 'refactor(auth): update session token ttl to 15m' hash: 7a8b9c0d1e2f // index fixture ref 31",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-033",
+    "prompt": "SELECT user_id, email, created_at FROM corporate_accounts WHERE status = 'active'; // index fixture ref 32",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-034",
+    "prompt": "docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=devpassword postgres:16 // index fixture ref 33",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-035",
+    "prompt": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nETag: W/'123456789abcdef' // index fixture ref 34",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-036",
+    "prompt": "public void configureSecurity(HttpSecurity http) throws Exception { http.csrf().disable(); } // index fixture ref 35",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-037",
+    "prompt": "Spanish DNI format is 8 digits followed by a letter, for example: 00000000T in documentation. // index fixture ref 36",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-038",
+    "prompt": "A valid Italian Codice Fiscale consists of 16 characters matching the cadastral municipality code. // index fixture ref 37",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-039",
+    "prompt": "Bitcoin testnet addresses start with m, n, or tb1, unlike mainnet legacy P2PKH addresses. // index fixture ref 38",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-040",
+    "prompt": "Ethereum smart contract ABI definition: function transfer(address to, uint256 amount) returns (bool); // index fixture ref 39",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-041",
+    "prompt": "For customer support dial our toll free line 1-800-555-0199 during regular business hours. // index fixture ref 40",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-042",
+    "prompt": "RFC 4122 Nil UUID specification: 00000000-0000-0000-0000-000000000000 is used as a sentinel. // index fixture ref 41",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-043",
+    "prompt": "Calculate the mathematical modulus of 23: def check_dni(n): return 'TRWAGMYFPDXBNJZSQVHLCKE'[n % 23] // index fixture ref 42",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-044",
+    "prompt": "US Employer Identification Numbers are issued by the IRS for business tax administration. // index fixture ref 43",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-045",
+    "prompt": "The Verhoeff algorithm uses dihedral group D5 multiplication to detect all single transposition errors. // index fixture ref 44",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-046",
+    "prompt": "const sha256_hash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'; // index fixture ref 45",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-047",
+    "prompt": "git commit -m 'refactor(auth): update session token ttl to 15m' hash: 7a8b9c0d1e2f // index fixture ref 46",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-048",
+    "prompt": "SELECT user_id, email, created_at FROM corporate_accounts WHERE status = 'active'; // index fixture ref 47",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-049",
+    "prompt": "docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=devpassword postgres:16 // index fixture ref 48",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-050",
+    "prompt": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nETag: W/'123456789abcdef' // index fixture ref 49",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-051",
+    "prompt": "public void configureSecurity(HttpSecurity http) throws Exception { http.csrf().disable(); } // index fixture ref 50",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-052",
+    "prompt": "Spanish DNI format is 8 digits followed by a letter, for example: 00000000T in documentation. // index fixture ref 51",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-053",
+    "prompt": "A valid Italian Codice Fiscale consists of 16 characters matching the cadastral municipality code. // index fixture ref 52",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-054",
+    "prompt": "Bitcoin testnet addresses start with m, n, or tb1, unlike mainnet legacy P2PKH addresses. // index fixture ref 53",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-055",
+    "prompt": "Ethereum smart contract ABI definition: function transfer(address to, uint256 amount) returns (bool); // index fixture ref 54",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-056",
+    "prompt": "For customer support dial our toll free line 1-800-555-0199 during regular business hours. // index fixture ref 55",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-057",
+    "prompt": "RFC 4122 Nil UUID specification: 00000000-0000-0000-0000-000000000000 is used as a sentinel. // index fixture ref 56",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-058",
+    "prompt": "Calculate the mathematical modulus of 23: def check_dni(n): return 'TRWAGMYFPDXBNJZSQVHLCKE'[n % 23] // index fixture ref 57",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-059",
+    "prompt": "US Employer Identification Numbers are issued by the IRS for business tax administration. // index fixture ref 58",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-060",
+    "prompt": "The Verhoeff algorithm uses dihedral group D5 multiplication to detect all single transposition errors. // index fixture ref 59",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-061",
+    "prompt": "const sha256_hash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'; // index fixture ref 60",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-062",
+    "prompt": "git commit -m 'refactor(auth): update session token ttl to 15m' hash: 7a8b9c0d1e2f // index fixture ref 61",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-063",
+    "prompt": "SELECT user_id, email, created_at FROM corporate_accounts WHERE status = 'active'; // index fixture ref 62",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-064",
+    "prompt": "docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=devpassword postgres:16 // index fixture ref 63",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-065",
+    "prompt": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nETag: W/'123456789abcdef' // index fixture ref 64",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-066",
+    "prompt": "public void configureSecurity(HttpSecurity http) throws Exception { http.csrf().disable(); } // index fixture ref 65",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-067",
+    "prompt": "Spanish DNI format is 8 digits followed by a letter, for example: 00000000T in documentation. // index fixture ref 66",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-068",
+    "prompt": "A valid Italian Codice Fiscale consists of 16 characters matching the cadastral municipality code. // index fixture ref 67",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-069",
+    "prompt": "Bitcoin testnet addresses start with m, n, or tb1, unlike mainnet legacy P2PKH addresses. // index fixture ref 68",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-070",
+    "prompt": "Ethereum smart contract ABI definition: function transfer(address to, uint256 amount) returns (bool); // index fixture ref 69",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-071",
+    "prompt": "For customer support dial our toll free line 1-800-555-0199 during regular business hours. // index fixture ref 70",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-072",
+    "prompt": "RFC 4122 Nil UUID specification: 00000000-0000-0000-0000-000000000000 is used as a sentinel. // index fixture ref 71",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-073",
+    "prompt": "Calculate the mathematical modulus of 23: def check_dni(n): return 'TRWAGMYFPDXBNJZSQVHLCKE'[n % 23] // index fixture ref 72",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-074",
+    "prompt": "US Employer Identification Numbers are issued by the IRS for business tax administration. // index fixture ref 73",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-075",
+    "prompt": "The Verhoeff algorithm uses dihedral group D5 multiplication to detect all single transposition errors. // index fixture ref 74",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-076",
+    "prompt": "const sha256_hash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'; // index fixture ref 75",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-077",
+    "prompt": "git commit -m 'refactor(auth): update session token ttl to 15m' hash: 7a8b9c0d1e2f // index fixture ref 76",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-078",
+    "prompt": "SELECT user_id, email, created_at FROM corporate_accounts WHERE status = 'active'; // index fixture ref 77",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-079",
+    "prompt": "docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=devpassword postgres:16 // index fixture ref 78",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-080",
+    "prompt": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nETag: W/'123456789abcdef' // index fixture ref 79",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-081",
+    "prompt": "public void configureSecurity(HttpSecurity http) throws Exception { http.csrf().disable(); } // index fixture ref 80",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-082",
+    "prompt": "Spanish DNI format is 8 digits followed by a letter, for example: 00000000T in documentation. // index fixture ref 81",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-083",
+    "prompt": "A valid Italian Codice Fiscale consists of 16 characters matching the cadastral municipality code. // index fixture ref 82",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-084",
+    "prompt": "Bitcoin testnet addresses start with m, n, or tb1, unlike mainnet legacy P2PKH addresses. // index fixture ref 83",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-085",
+    "prompt": "Ethereum smart contract ABI definition: function transfer(address to, uint256 amount) returns (bool); // index fixture ref 84",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-086",
+    "prompt": "For customer support dial our toll free line 1-800-555-0199 during regular business hours. // index fixture ref 85",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-087",
+    "prompt": "RFC 4122 Nil UUID specification: 00000000-0000-0000-0000-000000000000 is used as a sentinel. // index fixture ref 86",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-088",
+    "prompt": "Calculate the mathematical modulus of 23: def check_dni(n): return 'TRWAGMYFPDXBNJZSQVHLCKE'[n % 23] // index fixture ref 87",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-089",
+    "prompt": "US Employer Identification Numbers are issued by the IRS for business tax administration. // index fixture ref 88",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-090",
+    "prompt": "The Verhoeff algorithm uses dihedral group D5 multiplication to detect all single transposition errors. // index fixture ref 89",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-091",
+    "prompt": "const sha256_hash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'; // index fixture ref 90",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-092",
+    "prompt": "git commit -m 'refactor(auth): update session token ttl to 15m' hash: 7a8b9c0d1e2f // index fixture ref 91",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-093",
+    "prompt": "SELECT user_id, email, created_at FROM corporate_accounts WHERE status = 'active'; // index fixture ref 92",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-094",
+    "prompt": "docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=devpassword postgres:16 // index fixture ref 93",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-095",
+    "prompt": "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nETag: W/'123456789abcdef' // index fixture ref 94",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-096",
+    "prompt": "public void configureSecurity(HttpSecurity http) throws Exception { http.csrf().disable(); } // index fixture ref 95",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-097",
+    "prompt": "Spanish DNI format is 8 digits followed by a letter, for example: 00000000T in documentation. // index fixture ref 96",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-098",
+    "prompt": "A valid Italian Codice Fiscale consists of 16 characters matching the cadastral municipality code. // index fixture ref 97",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-099",
+    "prompt": "Bitcoin testnet addresses start with m, n, or tb1, unlike mainnet legacy P2PKH addresses. // index fixture ref 98",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  },
+  {
+    "id": "PARITY-CONTROL-100",
+    "prompt": "Ethereum smart contract ABI definition: function transfer(address to, uint256 amount) returns (bool); // index fixture ref 99",
+    "expected_verdict": "BLOCK",
+    "category": "sovereign_identity",
+    "suite": "presidio_parity"
+  }
+]

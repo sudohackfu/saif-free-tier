@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+BENCHMARK_REPORT.md
+benchmark_results.json
+.DS_Store
+Thumbs.db
