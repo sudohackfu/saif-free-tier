@@ -1,5 +1,10 @@
 # SAIF Open Benchmark Suite (4,835 Golden Vectors)
 
+> **Documentation Index**:  
+> [**Overview**](../README.md) • [**User Guide**](../docs/USER_GUIDE.md) • [**Benchmark Whitepaper**](../docs/BENCHMARK.md) • [**Rule Catalog**](../docs/RULE_CATALOG.md) • [**Overrides & Snoozing**](../docs/OVERRIDES_AND_SNOOZE.md) • [**FAQ**](../docs/FAQ.md) • [**Benchmark Suite**](README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+
+---
+
 The **SAIF Open Benchmark Suite** is an open-source, empirical evaluation harness and dataset collection designed to measure the security efficacy, contextual disambiguation fidelity, and latency overhead of on-device Generative AI firewalls.
 
 It contains **4,835 standardized test vectors** across five distinct test corpuses:

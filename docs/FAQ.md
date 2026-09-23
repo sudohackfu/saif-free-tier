@@ -1,5 +1,10 @@
 # Frequently Asked Questions (FAQ)
 
+> **Documentation Index**:  
+> [**Overview**](../README.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+
+---
+
 ### Q: What happens if `saif.exe` stops running or my laptop restarts?
 **A:** By default, SAIF employs a **fail-open** posture to ensure software developers are never unexpectedly blocked during routine work. If the local daemon is offline or restarting, outbound AI prompts transit normally.
 * For security-sensitive environments, you can toggle **Fail-Closed Offline Mode** in the Extension Dashboard (`System Diagnostics` tab). When enabled, prompts are blocked if the daemon cannot verify the payload.

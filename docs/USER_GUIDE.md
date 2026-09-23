@@ -1,5 +1,10 @@
 # SAIF User Guide: Setup, Browser Onboarding & Operational Guide
 
+> **Documentation Index**:  
+> [**Overview**](../README.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+
+---
+
 Welcome to the **SAIF Free Community Edition (Public Beta)**! This guide walks you through setting up SAIF on your workstation in under 2 minutes.
 
 ---

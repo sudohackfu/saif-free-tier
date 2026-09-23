@@ -10,7 +10,8 @@
 
 **100% On-Device Prompt Interception • Zero Cloud Dependencies • Zero Telemetry**
 
-[**Download SAIF-Setup.exe (v1.0.0 Beta)**](releases/SAIF-Setup.exe) • [**User Guide**](docs/USER_GUIDE.md) • [**Technical Whitepaper**](docs/BENCHMARK.md) • [**Rule Catalog**](docs/RULE_CATALOG.md)
+> **Documentation Index**:  
+> [**Overview**](README.md) • [**User Guide**](docs/USER_GUIDE.md) • [**Benchmark Whitepaper**](docs/BENCHMARK.md) • [**Rule Catalog**](docs/RULE_CATALOG.md) • [**Overrides & Snoozing**](docs/OVERRIDES_AND_SNOOZE.md) • [**FAQ**](docs/FAQ.md) • [**Benchmark Suite**](benchmark/README.md) • [**Empirical Report**](BENCHMARK_REPORT.md) • [**Community EULA**](EULA.md) • [**MIT License**](LICENSE.md)
 
 <p align="center">
   <img src="docs/screenshots/hero_banner.jpg" alt="SAIF Zero-Trust Semantic AI Firewall" width="100%" style="max-width: 860px; border-radius: 12px; border: 1px solid #334155; box-shadow: 0 12px 36px rgba(0,0,0,0.5);" />

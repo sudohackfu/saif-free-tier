@@ -1,5 +1,10 @@
 # SAIF Technical Whitepaper: Empirical Performance, Evasion Resilience & Zero-Trust Architecture
 
+> **Documentation Index**:  
+> [**Overview**](../README.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+
+---
+
 **Published**: September 2026  
 **Authors**: SAIF Engineering & Open Security Research Team  
 **Evaluation Corpus**: 4,835 Standardized Test Vectors  

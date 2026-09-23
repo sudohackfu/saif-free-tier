@@ -1,6 +1,11 @@
 # End User License Agreement (EULA)
 ## SAIF Free Community Edition (Public Beta)
 
+> **Documentation Index**:  
+> [**Overview**](README.md) • [**User Guide**](docs/USER_GUIDE.md) • [**Benchmark Whitepaper**](docs/BENCHMARK.md) • [**Rule Catalog**](docs/RULE_CATALOG.md) • [**Overrides & Snoozing**](docs/OVERRIDES_AND_SNOOZE.md) • [**FAQ**](docs/FAQ.md) • [**Benchmark Suite**](benchmark/README.md) • [**Empirical Report**](BENCHMARK_REPORT.md) • [**Community EULA**](EULA.md) • [**MIT License**](LICENSE.md)
+
+---
+
 **Effective Date**: September 23, 2026
 
 PLEASE READ THIS END USER LICENSE AGREEMENT ("AGREEMENT") CAREFULLY BEFORE DOWNLOADING, INSTALLING, OR USING THE SAIF BINARIES ("SOFTWARE"). BY DOWNLOADING, INSTALLING, OR USING THE SOFTWARE, YOU AGREE TO BE BOUND BY THE TERMS OF THIS AGREEMENT.
