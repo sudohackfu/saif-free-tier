@@ -8,20 +8,13 @@ SAIF is designed for **developer velocity**. Security controls should never bloc
 
 When SAIF intercepts an outbound prompt, an in-page shield modal appears over the AI chat:
 
-```
-┌────────────────────────────────────────────────────────────┐
-│ 🛡️  SAIF Security Shield: Outbound Prompt Intercepted      │
-├────────────────────────────────────────────────────────────┤
-│ Detected: AWS Access Key ID (pat-aws-key)                  │
-│ Confidence: High (Mathematical Entropy Verified)           │
-│ Snippet: "...AKIAIOSFODNN7EXAMPLE..."                      │
-│                                                            │
-│ Options:                                                   │
-│   [ Sanitize & Redact ]   Replace secret with [REDACTED]   │
-│   [ Break-Glass Override ] Submit anyway with audit log    │
-│   [ Dismiss & Edit ]      Return to prompt composer        │
-└────────────────────────────────────────────────────────────┘
-```
+<p align="center">
+  <a href="screenshots/inpage_ai_chat_interception.png" title="Click to view full resolution">
+    <img src="screenshots/inpage_ai_chat_interception.png" alt="SAIF In-Page Security Shield Modal" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(Click image to view full resolution)</em></sub>
+</p>
 
 ### How Override Works
 1. Clicking **Break-Glass Override** prompts for an optional one-line developer reason (e.g., *"Testing with dummy sandbox credentials"*).
@@ -35,6 +28,13 @@ When SAIF intercepts an outbound prompt, an in-page shield modal appears over th
 If you are conducting an extended debugging session with synthetic data, you can temporarily snooze active enforcement:
 
 1. Click the **SAIF shield icon** in your browser toolbar to open the popup.
+
+<p align="center">
+  <a href="screenshots/popup_showcase.png" title="Click to view full resolution">
+    <img src="screenshots/popup_showcase.png" alt="SAIF Toolbar Popup Console" width="340" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+</p>
+
 2. Select a pause duration:
    - **Pause for 5 Minutes**
    - **Pause for 15 Minutes**

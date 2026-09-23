@@ -121,21 +121,13 @@ A central challenge in developer-focused DLP is distinguishing random alphanumer
 
 Adversarial prompts routinely use encoding and linguistic tricks to bypass standard keyword or regex scanners. SAIF applies recursive syntactic unfolding prior to DLP or neural evaluation:
 
-### 4.1 Unfolding Pipeline
-
-```
-Raw Prompt
-  │
-  ├── 1. Base64 & Hex Extraction (Decodes chunks with valid padding and Shannon entropy >= 3.2)
-  │
-  ├── 2. Unicode Canonical Decomposition (NFKC homoglyph normalization, e.g. Cyrillic 'а' -> Latin 'a')
-  │
-  ├── 3. Leetspeak Normalization (@ -> a, 3 -> e, 1 -> l/i, 0 -> o, $ -> s)
-  │
-  ├── 4. AST Splicing & Template Literal Unrolling (`` `SELECT * FROM ${table}` `` -> unified semantic string)
-  │
-  └── 5. Linguistic Negation Disambiguation Head
-```
+<p align="center">
+  <a href="screenshots/dlp_pipeline_infographic.png" title="Click to view full resolution">
+    <img src="screenshots/dlp_pipeline_infographic.png" alt="SAIF Syntactic Unfolding & DLP Pipeline" width="100%" style="max-width: 840px; border-radius: 10px; border: 1px solid #334155; box-shadow: 0 8px 24px rgba(0,0,0,0.4);" />
+  </a>
+  <br>
+  <sub><em>(Click to view high-resolution pipeline diagram)</em></sub>
+</p>
 
 ### 4.2 Linguistic Negation Disambiguation Head
 
