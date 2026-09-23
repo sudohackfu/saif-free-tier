@@ -83,26 +83,38 @@ Traditional network firewalls, web proxies, and cloud DLP gateways fail on moder
 
 SAIF executes **directly on your workstation**, validating prompt payloads in sub-millisecond time on-device via a native Go security daemon and local ONNX neural cascades:
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  Developer inputs text in Browser, IDE, or Form Field   │
-└────────────────────────────┬────────────────────────────┘
-                             │ Intercepted locally on-device
-                             ▼
-┌─────────────────────────────────────────────────────────┐
-│  SAIF Workstation Engine (http://127.0.0.1:18080)       │
-│  • Recursive Syntactic De-Obfuscation Pipeline          │
-│  • Mathematical Checksum Verification (Luhn, Mod-97)    │
-│  • Shannon Information Entropy Analysis (H >= 3.2)      │
-│  • Local ONNX Neural Semantic Cascade (<15ms)           │
-└────────────────────────────┬────────────────────────────┘
-                             │
-               ┌─────────────┴─────────────┐
-               ▼                           ▼
-     [ Violation Detected ]      [ Clean Prompt ]
-     In-page shield modal halts  Transits instantly to LLM
-     outbound request & offers   (Zero noticeable latency)
-     1-click local redaction
+```mermaid
+flowchart TD
+    subgraph Surface["Workstation Interception Surface"]
+        A["Developer Input"] --> B{"Interception Layer"}
+        B -->|AI Chat Composer| C1["Front-Door DOM Trap"]
+        B -->|Jira / GitHub / Form| C2["Editable Host Interceptor"]
+        B -->|Address Bar Search| C3["Omnibox Navigation Guard"]
+        B -->|Clipboard Paste| C4["In-Place Paste Sanitizer"]
+    end
+
+    subgraph Daemon["SAIF On-Device Engine (:18080)"]
+        D["Pre-Flight Payload Normalizer"]
+        E1["Stage 1: Recursive De-Obfuscation<br/><i>(Base64, Hex, Leetspeak, NFKC)</i>"]
+        E2["Stage 2: Shannon Entropy & Directives<br/><i>(H &ge; 3.2, // saif:ignore)</i>"]
+        E3["Stage 3: Mathematical Normalizers<br/><i>(Luhn Mod-10, ISO 7064 Mod-97, Mod-23)</i>"]
+        E4["Stage 4: ONNX Model Cascades<br/><i>(SAIF Light &bull; Neural &bull; Deep Neural)</i>"]
+        
+        D --> E1 --> E2 --> E3 --> E4
+    end
+
+    C1 & C2 & C3 & C4 -->|Local Loopback IPC| D
+
+    E4 -->|Verdict: Clean| PASS["Permit Egress (&lt;15ms)<br/>Transits to AI Service"]
+    E4 -->|Verdict: Block| BLOCK["In-Page Security Shield<br/>Local Redaction or Override"]
+    C3 -->|Navigation Block| OMNI["Omnibox Redirect<br/>blocked.html Safe Page"]
+
+    classDef pass fill:#10b98120,stroke:#10b981,stroke-width:2px,color:#34d399;
+    classDef block fill:#ef444420,stroke:#ef4444,stroke-width:2px,color:#f87171;
+    classDef engine fill:#3b82f615,stroke:#3b82f6,stroke-width:1px,color:#93c5fd;
+    class PASS pass;
+    class BLOCK,OMNI block;
+    class E1,E2,E3,E4 engine;
 ```
 
 ---
@@ -132,6 +144,35 @@ Rather than relying on brittle, easily bypassed pattern lists, SAIF employs a mu
   * Unicode NFKC canonicalization and homoglyph mapping.
   * URL percent-encoding resolution and template literal unwrapping.
 
+```mermaid
+flowchart LR
+    RAW["Raw Outgoing Text"] --> DEC["Recursive Unpacker"]
+    
+    subgraph Deobfuscation["Multi-Stage Normalization"]
+        DEC --> B64["Base64 & Hex Decoding"]
+        B64 --> LEET["Leetspeak Transliteration"]
+        LEET --> NFKC["Unicode NFKC & Homoglyphs"]
+        NFKC --> AST["Template Literal Unwrapping"]
+    end
+
+    AST --> FILTER{"Evaluation Gate"}
+
+    subgraph Verifiers["High-Fidelity Verifiers"]
+        FILTER --> MATH["Mathematical Checksums<br/><i>(Luhn, ISO 7064, Mod-23)</i>"]
+        FILTER --> ENTROPY["Shannon Entropy Gate<br/><i>(H &ge; 3.2 Key Extraction)</i>"]
+        FILTER --> DIRECTIVE["Inline Directives<br/><i>(// saif:ignore[rule])</i>"]
+    end
+
+    MATH & ENTROPY & DIRECTIVE --> VERDICT{"Deterministic Verdict"}
+    VERDICT -->|Violation| BLK["Block & Local Redaction"]
+    VERDICT -->|Clean| SEM["Semantic Cascade Router"]
+
+    classDef norm fill:#6366f115,stroke:#6366f1,stroke-width:1px;
+    classDef check fill:#3b82f615,stroke:#3b82f6,stroke-width:1px;
+    class Deobfuscation norm;
+    class Verifiers check;
+```
+
 ---
 
 ## Three Production Models Available Out-of-the-Box
@@ -150,6 +191,31 @@ All three production models are included and hot-swappable directly in the Exten
 
 To provide a sustainable, enterprise-grade architecture, SAIF maintains a clear distinction between universal baseline security and organization-specific proprietary governance:
 
+```mermaid
+flowchart TB
+    subgraph Free["Free Community Edition (100% On-Device)"]
+        F1["Pre-Trained Universal Models<br/>(SAIF Light &bull; Neural &bull; Deep Neural)"]
+        F2["General Threat Coverage<br/>(Common Cloud Keys, PII, Broad Secrets)"]
+        F3["Local Workstation Logging<br/>(Local SQLite Spool)"]
+    end
+
+    subgraph ProEnt["Enterprise & Pro Upgrade Layer"]
+        E1["1-Click Custom Semantic Centroid Training<br/><i>(Trains directly on Private Repos & Internal Docs)</i>"]
+        E2["Proprietary Codenames & Trade Secrets<br/><i>(Project Titan, Internal Microservices, M&A)</i>"]
+        E3["Centralized Cedar Policy-as-Code Studio"]
+        E4["Fleet-Wide SIEM Streaming<br/><i>(Splunk &bull; Datadog &bull; Syslog)</i>"]
+    end
+
+    F1 -.->|Upgrade Path| E1
+    E1 --> E2
+    E2 --> E3 --> E4
+
+    classDef freeBox fill:#10b98110,stroke:#10b981,stroke-width:1.5px;
+    classDef entBox fill:#8b5cf610,stroke:#8b5cf6,stroke-width:1.5px;
+    class Free freeBox;
+    class ProEnt entBox;
+```
+
 ### Free Community Edition (What You Get Today)
 * **Universal General Semantic Protection**: Pre-trained on broad software engineering concepts, open-source architectures, credential leakage, PII classifications, and universal trade secret terminology.
 * **100% On-Device Sovereignty**: Completely self-contained local ONNX runtime with zero cloud phoning.
@@ -164,7 +230,38 @@ To provide a sustainable, enterprise-grade architecture, SAIF maintains a clear 
 
 ## Development Roadmap & The Future Horizon
 
-We are aggressively expanding SAIF from browser interception to a full-stack developer security layer. The following capabilities are in active development:
+We are aggressively expanding SAIF from browser interception to a full-stack developer security layer:
+
+```mermaid
+flowchart LR
+    subgraph Phase1["Live Today: Workstation Surface"]
+        W1["Browser Extension (Chrome / Edge / Brave)"]
+        W2["Omnibox Search Interception"]
+        W3["Go Workstation Daemon (:18080)"]
+    end
+
+    subgraph Phase2["In Development: Developer OS"]
+        D1["VS Code & JetBrains IDE Sensors"]
+        D2["Inline LSP Gutter Warnings"]
+        D3["Kernel & Socket Filtering (WFP / eBPF)"]
+    end
+
+    subgraph Phase3["Next-Gen: Multi-Modal & Agents"]
+        M1["Clipboard Screenshot OCR DLP"]
+        M2["Deep Document Sanitizer (PDF / DOCX)"]
+        M3["Model Context Protocol (MCP) Tool Firewall"]
+        M4["Local Model Gateway (Ollama :11434)"]
+    end
+
+    Phase1 ==> Phase2 ==> Phase3
+
+    classDef live fill:#10b98115,stroke:#10b981,stroke-width:1px;
+    classDef dev fill:#3b82f615,stroke:#3b82f6,stroke-width:1px;
+    classDef future fill:#8b5cf615,stroke:#8b5cf6,stroke-width:1px;
+    class Phase1 live;
+    class Phase2 dev;
+    class Phase3 future;
+```
 
 ### 1. IDE Extensions & LSP Interceptors (In Active Development)
 * **VS Code & JetBrains Native Sensors**: Inline prompt scanning directly within developer IDEs, catching sensitive data before it reaches AI assistants like GitHub Copilot, Cursor, or Continue.dev.
