@@ -21,27 +21,57 @@ SAIF operates transparently on your local workstation without synthetic testbed 
 ### 1. In-Page AI Prompt Interception & Local Redaction
 When sensitive credentials, keys, or proprietary data are entered into AI web apps (Claude, ChatGPT, Gemini, DeepSeek), SAIF halts outbound transmission before the request reaches the network. Developers can choose to auto-sanitize tokens locally or trigger an authorized break-glass override:
 
-![In-Page AI Chat Interception](docs/screenshots/inpage_ai_chat_interception.png)
+<p align="center">
+  <a href="docs/screenshots/inpage_ai_chat_interception.png" title="Click to view full resolution">
+    <img src="docs/screenshots/inpage_ai_chat_interception.png" alt="In-Page AI Chat Interception" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(Click image to view full resolution)</em></sub>
+</p>
 
 ### 2. Ambient In-Composer Risk Warning
 Before submission, SAIF monitors composer input in real-time, displaying a non-intrusive preflight risk badge if sensitive variables or confidential tokens are detected:
 
-![Ambient Preflight Risk Card](docs/screenshots/inpage_preflight_risk_card.png)
+<p align="center">
+  <a href="docs/screenshots/inpage_preflight_risk_card.png" title="Click to view full resolution">
+    <img src="docs/screenshots/inpage_preflight_risk_card.png" alt="Ambient Preflight Risk Card" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(Click image to view full resolution)</em></sub>
+</p>
 
 ### 3. Omnibox (Address Bar) Search Interception
 Developers frequently copy/paste API tokens, internal URLs, or credentials directly into their browser address bar, inadvertently submitting them to public search engine query logs. SAIF intercepts Omnibox navigation at the socket layer and blocks the query before it leaves the machine:
 
-![Omnibox Address Bar Search Interception](docs/screenshots/omnibox_blocked_showcase.png)
+<p align="center">
+  <a href="docs/screenshots/omnibox_blocked_showcase.png" title="Click to view full resolution">
+    <img src="docs/screenshots/omnibox_blocked_showcase.png" alt="Omnibox Address Bar Search Interception" width="640" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(Click image to view full resolution)</em></sub>
+</p>
 
 ### 4. Workstation Options Console & Model Triad
 Full visibility into active protection engines, algorithmic guards, and hot-swappable local models (`SAIF Light`, `SAIF Neural`, and `SAIF Deep Neural`):
 
-![SAIF Dashboard Showcase](docs/screenshots/dashboard_showcase.png)
+<p align="center">
+  <a href="docs/screenshots/dashboard_showcase.png" title="Click to view full resolution">
+    <img src="docs/screenshots/dashboard_showcase.png" alt="SAIF Dashboard Showcase" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(Click image to view full resolution)</em></sub>
+</p>
 
 ### 5. Toolbar Popup Console
 Instant workstation status, engine latency diagnostics, and 1-click protection snooze controls:
 
-![SAIF Popup Console](docs/screenshots/popup_showcase.png)
+<p align="center">
+  <a href="docs/screenshots/popup_showcase.png" title="Click to view full resolution">
+    <img src="docs/screenshots/popup_showcase.png" alt="SAIF Popup Console" width="340" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(Click image to view full resolution)</em></sub>
+</p>
 
 ---
 
