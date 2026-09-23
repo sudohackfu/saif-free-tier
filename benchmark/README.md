@@ -1,7 +1,7 @@
 # SAIF Open Benchmark Suite (4,835 Golden Vectors)
 
 > **Documentation Index**:  
-> [**Overview**](../README.md) • [**User Guide**](../docs/USER_GUIDE.md) • [**Benchmark Whitepaper**](../docs/BENCHMARK.md) • [**Rule Catalog**](../docs/RULE_CATALOG.md) • [**Overrides & Snoozing**](../docs/OVERRIDES_AND_SNOOZE.md) • [**FAQ**](../docs/FAQ.md) • [**Benchmark Suite**](README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+> [**Overview**](../README.md) • [**Architecture Diagrams**](../docs/ARCHITECTURE.md) • [**User Guide**](../docs/USER_GUIDE.md) • [**Benchmark Whitepaper**](../docs/BENCHMARK.md) • [**Rule Catalog**](../docs/RULE_CATALOG.md) • [**Overrides & Snoozing**](../docs/OVERRIDES_AND_SNOOZE.md) • [**FAQ**](../docs/FAQ.md) • [**Benchmark Suite**](README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
 
 ---
 

@@ -1,7 +1,7 @@
 # SAIF Technical Whitepaper: Empirical Performance, Evasion Resilience & Zero-Trust Architecture
 
 > **Documentation Index**:  
-> [**Overview**](../README.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+> [**Overview**](../README.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
 
 ---
 
@@ -41,10 +41,10 @@ flowchart TD
     Sensor --> Preflight["Pre-Flight POST /evaluate<br/>(http://127.0.0.1:18080)"]
     
     subgraph WorkstationDaemon["SAIF Workstation Daemon (saif.exe)"]
-        Preproc["Syntactic Normalizer & Unfolder<br/>• Base64 & Hex Decoding<br/>• Leetspeak & Homoglyphs<br/>• AST Template Unrolling"]
+        Preproc["Syntactic Normalizer & Unfolder<br/>•- Base64 & Hex Decoding<br/>•- Leetspeak & Homoglyphs<br/>•- AST Template Unrolling"]
         Preflight --> Preproc
         
-        FastPath{"Deterministic Triage<br/>• Presidio DLP Patterns<br/>• Shannon Entropy Filter<br/>• Algorithmic Checksums"}
+        FastPath{"Deterministic Triage<br/>•- Presidio DLP Patterns<br/>•- Shannon Entropy Filter<br/>•- Algorithmic Checksums"}
         Preproc --> FastPath
         
         FastPath -->|Definite Secret / PII| BlockVerdict["Verdict: BLOCK (<1ms)"]

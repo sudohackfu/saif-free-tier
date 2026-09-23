@@ -1,7 +1,7 @@
 # SAIF Overrides, Snoozing & Local Audit History
 
 > **Documentation Index**:  
-> [**Overview**](../README.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+> [**Overview**](../README.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
 
 ---
 
@@ -20,6 +20,30 @@ When SAIF intercepts an outbound prompt, an in-page shield modal appears over th
   <br>
   <sub><em>(Click image to view full resolution)</em></sub>
 </p>
+
+### Override Sequence Workflow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as Developer
+    participant Modal as In-Page Shield Modal
+    participant Sensor as Extension Interceptor
+    participant Daemon as saif.exe (Local Daemon)
+    participant AI as AI Web App (Claude/ChatGPT)
+
+    Note over Dev,Modal: Sensitive Token Intercepted & Blocked
+    Modal-->>Dev: Displays Block Card ("AWS Secret Key Detected")
+    Dev->>Modal: Clicks "Break-Glass Override"
+    Modal->>Dev: Prompts for developer justification
+    Dev->>Modal: Enters reason ("Testing mock credentials in dev")
+    Modal->>Daemon: POST /v1/override (token, justification)
+    Daemon->>Daemon: Log event to local audit store & issue single-use nonce
+    Daemon-->>Sensor: { status: "AUTHORIZED", nonce: "uuid-v4" }
+    Sensor->>Modal: Close Shield Modal
+    Sensor->>AI: Release original prompt payload
+    AI-->>Dev: Prompt delivered; AI streaming begins
+```
 
 ### How Override Works
 1. Clicking **Break-Glass Override** prompts for an optional one-line developer reason (e.g., *"Testing with dummy sandbox credentials"*).

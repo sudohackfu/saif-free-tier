@@ -1,7 +1,7 @@
 # SAIF User Guide: Setup, Browser Onboarding & Operational Guide
 
 > **Documentation Index**:  
-> [**Overview**](../README.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+> [**Overview**](../README.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
 
 ---
 
@@ -10,6 +10,21 @@ Welcome to the **SAIF Free Community Edition (Public Beta)**! This guide walks y
 ---
 
 ## 1. Quick Installation (Windows)
+
+```mermaid
+flowchart LR
+    A["Download SAIF-Setup.exe"] --> B["Run Installer (User Space)"]
+    B --> C["saif.exe Daemon Starts on 127.0.0.1:44321"]
+    B --> D["Extension Folder Opened in Explorer"]
+    D --> E["Load Unpacked in Chrome / Edge / Brave"]
+    C & E --> F["Zero-Trust Protection Active!"]
+
+    classDef step fill:#1e293b,stroke:#38bdf8,stroke-width:1px,color:#fff;
+    classDef done fill:#065f46,stroke:#10b981,stroke-width:2px,color:#fff;
+    class A,B,C,D,E step;
+    class F done;
+```
+
 
 1. Download **[`SAIF-Setup.exe`](releases/SAIF-Setup.exe)** from the latest release.
 2. Run `SAIF-Setup.exe`.
