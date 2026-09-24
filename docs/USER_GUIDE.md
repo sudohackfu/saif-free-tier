@@ -109,6 +109,19 @@ Toggling profiles updates the local daemon instantly without restarting your bro
 
 ---
 
-## 5. macOS and Linux Support
+## 5. Egress Inspection Modes
+
+SAIF includes a three-mode Egress Policy Engine accessible via the extension popup or the **System Health & Architecture** tab in the dashboard:
+
+* **`AI Only` (Default & Recommended)**:  
+  Provides full real-time input protection across **all** websites (Google, GitHub, Jira, Pastebin, intranet apps) while restricting background network wire inspection exclusively to AI provider endpoints (`chatgpt.com`, `claude.ai`, `gemini.google.com`, `deepseek.com`, etc.). Background analytics or telemetry packets from third-party non-AI services do not trigger false-alarm blocks.
+* **`Audit Only` (Monitor & Log)**:  
+  Runs all rule evaluation engines across all traffic without interrupting your workflow. Violations are recorded as simulated blocks (`SIMULATED BLOCK`) in your local audit history for compliance and security posture review without showing blocking modals.
+* **`Strict` (Enforce All)**:  
+  Enforces zero-trust blocking across all web inputs, search engines, and background network traffic universally.
+
+---
+
+## 6. macOS and Linux Support
 
 Windows is the initial launch platform for the Public Beta. Native packages for **macOS (Apple Silicon & Intel DMG)** and **Linux (deb / rpm / systemd)** are currently under active development on our near-term roadmap.
