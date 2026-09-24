@@ -236,7 +236,7 @@ flowchart LR
 ## 1-Minute Quickstart (Windows)
 
 1. **Download the Setup Executable**:  
-   Download **[`SAIF-Setup.exe`](releases/SAIF-Setup.exe)** (35.4 MB) from the latest release.
+   Download **[`SAIF-Setup.exe`](releases/SAIF-Setup.exe)** (19.6 MB) from the latest release.
 2. **Run Installer**:  
    Double-click `SAIF-Setup.exe`. It runs 100% in user space without requiring administrator privileges.
 3. **Load Extension**:  
