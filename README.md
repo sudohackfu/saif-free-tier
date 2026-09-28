@@ -1,7 +1,7 @@
 # Semantic AI Firewall (SAIF)
 ### The Zero-Trust Generative AI Security Layer for Developers
 
-[![Public Beta](https://img.shields.io/badge/Release-Public%20Beta-blue.svg)](https://github.com/saif-project/saif-free-tier/releases)
+[![Release: v1.0.1](https://img.shields.io/badge/Release-v1.0.1-blue.svg)](releases/SAIF-Setup.exe)
 [![License: MIT](https://img.shields.io/badge/Benchmark%20License-MIT-green.svg)](LICENSE.md)
 [![EULA: Community](https://img.shields.io/badge/Binary%20License-Community%20EULA-purple.svg)](EULA.md)
 [![Latency SLA](https://img.shields.io/badge/P50%20Latency-%3C15ms-brightgreen.svg)](docs/BENCHMARK.md)
@@ -11,7 +11,24 @@
 **100% On-Device Prompt Interception • Zero Cloud Dependencies • Zero Telemetry**
 
 > **Documentation Index**:  
-> [**Overview**](README.md) • [**Architecture Diagrams**](docs/ARCHITECTURE.md) • [**User Guide**](docs/USER_GUIDE.md) • [**Benchmark Whitepaper**](docs/BENCHMARK.md) • [**Rule Catalog**](docs/RULE_CATALOG.md) • [**Overrides & Snoozing**](docs/OVERRIDES_AND_SNOOZE.md) • [**FAQ**](docs/FAQ.md) • [**Benchmark Suite**](benchmark/README.md) • [**Empirical Report**](BENCHMARK_REPORT.md) • [**Community EULA**](EULA.md) • [**MIT License**](LICENSE.md)
+> [**Overview**](README.md) • [**Changelog (v1.0.1)**](CHANGELOG.md) • [**Architecture Diagrams**](docs/ARCHITECTURE.md) • [**User Guide**](docs/USER_GUIDE.md) • [**Benchmark Whitepaper**](docs/BENCHMARK.md) • [**Rule Catalog**](docs/RULE_CATALOG.md) • [**Overrides & Snoozing**](docs/OVERRIDES_AND_SNOOZE.md) • [**FAQ**](docs/FAQ.md) • [**Benchmark Suite**](benchmark/README.md) • [**Empirical Report**](BENCHMARK_REPORT.md) • [**Community EULA**](EULA.md) • [**MIT License**](LICENSE.md)
+
+---
+
+## Download & Quickstart (Release v1.0.1)
+
+| Asset | Platform / Target | Size | Description |
+| :--- | :--- | :--- | :--- |
+| **[`SAIF-Setup.exe`](releases/SAIF-Setup.exe)** | Windows 10 / 11 (64-bit) | 19.69 MB | Native Per-Monitor DPI v2 Inno Setup single-action installer (Zero UAC / user-space). |
+| **[`saif-extension.zip`](releases/saif-extension.zip)** | Chromium (Chrome, Brave, Edge) | 124.6 KB | Pre-packaged Manifest V3 browser extension for unpacked developer installation. |
+
+```powershell
+# Quick install: execute user-space installer (no administrator privileges required)
+Start-Process .\releases\SAIF-Setup.exe
+```
+
+For complete setup and browser onboarding, see the [**User Guide**](docs/USER_GUIDE.md).  
+Detailed release notes and version history are tracked in the [**Changelog**](CHANGELOG.md).
 
 ---
 
