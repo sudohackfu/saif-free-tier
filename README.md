@@ -19,15 +19,22 @@
 
 | Asset | Platform / Target | Size | Description |
 | :--- | :--- | :--- | :--- |
-| **[`SAIF-Setup.exe`](releases/SAIF-Setup.exe)** | Windows 10 / 11 (64-bit) | 19.69 MB | Native Per-Monitor DPI v2 Inno Setup single-action installer (Zero UAC / user-space). |
+| **[`SAIF-Setup.exe`](releases/SAIF-Setup.exe)** | Windows 10 / 11 (64-bit) | 19.76 MB | Native Inno Setup single-action installer with Scope Selection (Full Developer Protection or Browser Only, Zero UAC). |
 | **[`saif-extension.zip`](releases/saif-extension.zip)** | Chromium (Chrome, Brave, Edge) | 124.6 KB | Pre-packaged Manifest V3 browser extension for unpacked developer installation. |
 
 ```powershell
 # Quick install: execute user-space installer (no administrator privileges required)
 Start-Process .\releases\SAIF-Setup.exe
+
+# Terminal control commands (available after installation)
+saif status      # Check agent state, listening port, and active model profile
+saif pause 15m   # Temporarily pause firewall (transparent bypass mode)
+saif on          # Resume active inspection and DLP enforcement
+saif doctor      # Run 5-point workstation diagnostic health check
+saif repair      # Auto-remediate certificates, trust store, and environment
 ```
 
-For complete setup and browser onboarding, see the [**User Guide**](docs/USER_GUIDE.md).  
+For complete setup and IDE onboarding, see the [**User Guide**](docs/USER_GUIDE.md).  
 Detailed release notes and version history are tracked in the [**Changelog**](CHANGELOG.md).
 
 ---

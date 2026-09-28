@@ -122,6 +122,43 @@ SAIF includes a three-mode Egress Policy Engine accessible via the extension pop
 
 ---
 
-## 6. macOS and Linux Support
+## 6. IDE & CLI Tool Protection (Antigravity, Claude Code, Copilot, Cline)
+
+SAIF protects developer AI tools directly inside your editor and terminal. When running the installer with **Full Developer Protection**, SAIF configures `NODE_EXTRA_CA_CERTS` and local proxy routing automatically.
+
+### Supported Tools:
+* **Antigravity IDE**: Inherits `NODE_EXTRA_CA_CERTS` and proxy settings automatically. Outbound code context, files attached to chat, and prompt completions are inspected locally.
+* **Claude Code (`@anthropic-ai/claude-code`)**: Inherits user-level environment variables; prompts and file reads are governed transparently.
+* **GitHub Copilot & Copilot Chat**: Protects outbound code context from leaking proprietary secrets or unredacted credentials.
+* **Cline, Roo Code & Continue.dev**: Compatible via standard proxy settings or custom `base_url` pointing to `http://127.0.0.1:18080/v1`.
+
+---
+
+## 7. Workstation CLI Commands
+
+Manage SAIF directly from your terminal (PowerShell, cmd, or bash):
+
+```powershell
+# Check agent status, listening port, and active model profile
+saif status
+
+# Pause firewall protection (transparent bypass mode)
+saif off                 # Pause indefinitely
+saif pause 15m           # Pause for 15 minutes (or 5m, 1h)
+
+# Resume active inspection and DLP enforcement
+saif on
+
+# Run a passive 5-point diagnostic health check
+saif doctor
+
+# Automatically repair certificates, trust store, and environment variables
+saif repair              # Run active self-healing
+saif repair --dry-run    # Preview actions without modifying system
+```
+
+---
+
+## 8. macOS and Linux Support
 
 Windows is the initial launch platform for the Public Beta. Native packages for **macOS (Apple Silicon & Intel DMG)** and **Linux (deb / rpm / systemd)** are currently under active development on our near-term roadmap.

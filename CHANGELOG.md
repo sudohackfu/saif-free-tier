@@ -7,9 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.0.1] - 2026-09-27
+## [1.0.1] - 2026-09-28
 
 ### Added
+- **Workstation CLI Control & Management Commands**:
+  - `saif on` / `saif resume`: Instantly re-enable prompt inspection and DLP rules.
+  - `saif off`: Switch local firewall to transparent bypass mode (zero latency, no socket teardown).
+  - `saif pause [dur]`: Pause protection for preset durations (`5m`, `15m`, `1h`, or custom durations).
+  - `saif status`: Display real-time daemon state, listening port, active model profile, and rules count.
+  - `saif doctor`: Read-only 5-point workstation diagnostic check across certificates, trust store, environment variables, and proxy socket.
+  - `saif repair [--dry-run]`: Self-healing auto-remediation that regenerates CAs, re-imports into Windows CurrentUser store, and synchronizes `NODE_EXTRA_CA_CERTS`.
+- **Installer Scope Selection & Transparency**:
+  - Single-action installer now offers **Full Developer Protection** (IDEs, CLIs, Browsers) or **Browser Only** (zero proxy/cert install).
+  - Pre-installation technical disclosure dialog detailing on-device certificate generation and zero telemetry.
+  - Interactive maintenance detection: re-running setup detects existing install and offers **Diagnostics & Repair**.
+  - Zero-footprint clean uninstaller: removes root CA from Windows store, cleans environment variables, and prompts for audit log retention.
+- **IDE & CLI AI Tool Interception Support**:
+  - Automatic `NODE_EXTRA_CA_CERTS` provisioning for Antigravity IDE, Claude Code, GitHub Copilot, Cline, and Continue.dev.
+  - Transparent HTTP `CONNECT` forward proxy tunneling for non-AI domains (`github.com`, `npmjs.org`).
 - **Frictionless Inno Setup Windows Installer**:
   - Native Per-Monitor DPI v2 Segoe UI installer packaged as `SAIF-Setup.exe` (19.69 MB).
   - Installs cleanly into user space (`%LOCALAPPDATA%\Programs\SAIF`) with **zero administrator privileges (UAC-free)**.
