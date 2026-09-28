@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.2] - 2026-09-28
+
+### Added
+- **Dynamic TLS MITM Forward Proxy Interception for Antigravity IDE & Go Runtimes**:
+  - Intercepts and decrypts TLS traffic for Antigravity IDE language server and Google Cloud Code (`cloudcode-pa.googleapis.com`) using on-device dynamically generated leaf certificates.
+  - Implemented lazy upstream dialing to prevent upstream race conditions during local HTTP 403 blocks.
+  - In-flight sliding-window regex DLP scanning detecting credentials, API keys, and sensitive tokens with Zero-Trust default-deny posture.
+  - Fallback transparent pass-through tunneling for non-AI domains.
+- **Installer Root CA Registration & Environment Trust Provisioning**:
+  - Automatically imports the local workstation Root CA (`ca.pem`) into the Windows `CurrentUser\Root` certificate store using `certutil.exe` with Windows Smart App Control (SAC) compliance via `shellexec`.
+  - Automatically registers `SSL_CERT_FILE` in the Windows user environment pointing to `%LOCALAPPDATA%\saif\ca.pem` to ensure Go, Python, OpenSSL, and curl runtimes seamlessly trust the local proxy.
+
+---
+
 ## [1.0.1] - 2026-09-28
 
 ### Added

@@ -1,7 +1,7 @@
 # Semantic AI Firewall (SAIF)
 ### The Zero-Trust Generative AI Security Layer for Developers
 
-[![Release: v1.0.1](https://img.shields.io/badge/Release-v1.0.1-blue.svg)](releases/SAIF-Setup.exe)
+[![Release: v1.0.2](https://img.shields.io/badge/Release-v1.0.2-blue.svg)](releases/SAIF-Setup.exe)
 [![License: MIT](https://img.shields.io/badge/Benchmark%20License-MIT-green.svg)](LICENSE.md)
 [![EULA: Community](https://img.shields.io/badge/Binary%20License-Community%20EULA-purple.svg)](EULA.md)
 [![Latency SLA](https://img.shields.io/badge/P50%20Latency-%3C15ms-brightgreen.svg)](docs/BENCHMARK.md)
@@ -11,11 +11,11 @@
 **100% On-Device Prompt Interception • Zero Cloud Dependencies • Zero Telemetry**
 
 > **Documentation Index**:  
-> [**Overview**](README.md) • [**Changelog (v1.0.1)**](CHANGELOG.md) • [**Architecture Diagrams**](docs/ARCHITECTURE.md) • [**User Guide**](docs/USER_GUIDE.md) • [**Benchmark Whitepaper**](docs/BENCHMARK.md) • [**Rule Catalog**](docs/RULE_CATALOG.md) • [**Overrides & Snoozing**](docs/OVERRIDES_AND_SNOOZE.md) • [**FAQ**](docs/FAQ.md) • [**Benchmark Suite**](benchmark/README.md) • [**Empirical Report**](BENCHMARK_REPORT.md) • [**Community EULA**](EULA.md) • [**MIT License**](LICENSE.md)
+> [**Overview**](README.md) • [**Changelog (v1.0.2)**](CHANGELOG.md) • [**Architecture Diagrams**](docs/ARCHITECTURE.md) • [**User Guide**](docs/USER_GUIDE.md) • [**Benchmark Whitepaper**](docs/BENCHMARK.md) • [**Rule Catalog**](docs/RULE_CATALOG.md) • [**Overrides & Snoozing**](docs/OVERRIDES_AND_SNOOZE.md) • [**FAQ**](docs/FAQ.md) • [**Benchmark Suite**](benchmark/README.md) • [**Empirical Report**](BENCHMARK_REPORT.md) • [**Community EULA**](EULA.md) • [**MIT License**](LICENSE.md)
 
 ---
 
-## Download & Quickstart (Release v1.0.1)
+## Download & Quickstart (Release v1.0.2)
 
 | Asset | Platform / Target | Size | Description |
 | :--- | :--- | :--- | :--- |

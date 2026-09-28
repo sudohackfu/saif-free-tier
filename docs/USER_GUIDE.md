@@ -1,11 +1,11 @@
 # SAIF User Guide: Setup, Browser Onboarding & Operational Guide
 
 > **Documentation Index**:  
-> [**Overview**](../README.md) • [**Changelog (v1.0.1)**](../CHANGELOG.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+> [**Overview**](../README.md) • [**Changelog (v1.0.2)**](../CHANGELOG.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
 
 ---
 
-Welcome to the **SAIF Free Community Edition (Release v1.0.1)**! This guide walks you through setting up SAIF on your workstation in under 2 minutes.
+Welcome to the **SAIF Free Community Edition (Release v1.0.2)**! This guide walks you through setting up SAIF on your workstation in under 2 minutes.
 
 ---
 
@@ -40,7 +40,7 @@ flowchart LR
 ```
 
 
-1. Download **[`SAIF-Setup.exe`](../releases/SAIF-Setup.exe)** (Release v1.0.1, 19.69 MB).
+1. Download **[`SAIF-Setup.exe`](../releases/SAIF-Setup.exe)** (Release v1.0.2).
 2. Run `SAIF-Setup.exe`.
    - **No Administrator Rights Required**: SAIF runs 100% in your user space (`%LOCALAPPDATA%\Programs\SAIF`).
    - The installer automatically starts the background daemon and prepares your browser extension.
