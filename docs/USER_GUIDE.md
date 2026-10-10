@@ -125,7 +125,7 @@ SAIF includes a three-mode Egress Policy Engine accessible via the extension pop
 
 SAIF v1.0.4 integrates directly with **Google Antigravity IDE** and the **Antigravity CLI (`agy`)** through native lifecycle interception hooks.
 
-Unlike brittle HTTP proxies or TLS certificate injection that break Google Cloud certificate pinning, SAIF utilizes the official **Antigravity Hook Protocol (`PreInvocation`)**. Outbound user prompts and agent tool invocations are scanned synchronously in-memory before wire transmission. If sensitive data (API keys, PII, internal IP addresses, corporate secrets) is detected, SAIF returns Exit Code 2, preventing transmission and displaying an immediate remediation banner in the chat UI.
+Unlike brittle HTTP proxies or TLS certificate injection that break Google Cloud certificate pinning, SAIF utilizes the official **Antigravity Hook Protocol (`PreInvocation` and `PreToolUse`)**. Outbound user prompts and agent tool invocations are scanned synchronously in-memory before wire transmission. If sensitive data (API keys, PII, internal IP addresses, corporate secrets) is detected, SAIF triggers native desktop triage or blocks execution before any bytes leave the workstation.
 
 ### Configuration (`hooks.json`)
 
@@ -133,6 +133,14 @@ To enable protection across all Antigravity sessions on your machine, configure 
 
 * **Global Path**: `%USERPROFILE%\.gemini\config\hooks.json`
 * **Workspace Path**: `<workspace-root>\.agents\hooks.json`
+
+> [!IMPORTANT]
+> **UTF-8 Encoding (No BOM)**:  
+> Antigravity's Go hook loader requires `hooks.json` to be saved strictly as **UTF-8 without BOM**. If saved with a UTF-8 BOM, the loader fails to parse the configuration (`invalid character '\ufeff'`). In PowerShell, write using `[System.IO.File]::WriteAllText($path, $json, (New-Object System.Text.UTF8Encoding($false)))`.
+
+> [!TIP]
+> **Command Quoting on Windows**:  
+> Because Antigravity invokes hook commands via `cmd.exe /c`, do **not** wrap the command string in escaped outer quotes (such as `"\"...\" hook"`). Simply specify `"command": "saif hook"` since `%LOCALAPPDATA%\Programs\SAIF` is automatically added to your user `PATH` by the installer.
 
 Add the following configuration:
 
@@ -142,7 +150,7 @@ Add the following configuration:
     "PreInvocation": [
       {
         "type": "command",
-        "command": "\"%LOCALAPPDATA%\\Programs\\SAIF\\saif.exe\" hook",
+        "command": "saif hook",
         "description": "Scans outbound prompts & conversation context before dispatch to LLM",
         "timeout": 15
       }
@@ -153,7 +161,7 @@ Add the following configuration:
         "hooks": [
           {
             "type": "command",
-            "command": "\"%LOCALAPPDATA%\\Programs\\SAIF\\saif.exe\" hook",
+            "command": "saif hook",
             "description": "Validates agent tool actions & code modifications before local execution",
             "timeout": 5
           }
@@ -164,16 +172,24 @@ Add the following configuration:
 }
 ```
 
-> [!TIP]
-> **Universal Path Notation & Tool Coverage**:  
-> * **`PreInvocation`**: Synchronously inspects human prompts and system context *before* transmission to cloud LLM providers, preventing confidential credentials or trade secrets from leaving your workstation.
-> * **`PreToolUse`**: Validates AI agent commands and file modifications *before* execution on your system (e.g. preventing unvetted shell execution or writing unsanitized secrets to disk).
-> * If `saif.exe` is already in your PATH, you can simplify the command to `"saif.exe hook"`. Ensure backslashes are escaped (`\\`) when using JSON file paths.
+### Native 3-Button Break-Glass Triage Dialog
+
+When a sensitive secret or policy violation is detected in an outbound user prompt during `PreInvocation`, SAIF displays an interactive native Win32 dialog offering three distinct actions:
+
+| Action | Button | Behavior & Guarantees |
+| :--- | :---: | :--- |
+| **Break Glass** | **`[Break Glass]`** | Authorizes an audited emergency override. Logs the security override event to the local SAIF daemon audit trail and permits the prompt to transmit raw to the AI service. |
+| **Redact** | **`[Redact]`** | Sanitizes sensitive tokens in-place directly within the active session transcript (`transcript_full.jsonl`) with masked labels (e.g., `[REDACTED_SSN]`), posts an ephemeral notification in the chat UI, and proceeds with the safe sanitized turn. |
+| **Block** | **`[Block]`** | Immediately purges the sensitive violation from the local session transcript (`transcript_full.jsonl`) so subsequent turns cannot accidentally bundle or leak the confidential text, then halts the turn cleanly via a circuit breaker error step. |
+
+> [!NOTE]
+> **Stateless Chat Replay Prevention & Deduplication**:  
+> Cloud LLM chats are stateless; each subsequent turn bundles and re-transmits the complete conversation transcript. By immediately sanitizing `transcript_full.jsonl` upon **Redact** or **Block**, SAIF guarantees that aborted or sanitized secrets are never leaked in subsequent queries. In addition, multi-turn agent execution loops (`invocationNum > 0`) are automatically deduplicated so you are only prompted once per user submission.
 
 ### How It Works:
 1. **Zero Proxy Overhead**: Runs directly via stdin/stdout IPC without listening proxies or breaking TLS certificate pinning.
 2. **Synchronous Dual-Layer Interception**: Prompts and tool parameters are evaluated against the local Cedar policy engine and regex pattern manifest in < 5ms.
-3. **Fail-Closed Security with Break-Glass Override**: If a sensitive secret or policy violation is detected, SAIF halts transmission immediately and displays a desktop alert allowing the developer to authorize an audited emergency break-glass override or abort cleanly.
+3. **Fail-Closed Security with In-Place Remediation**: If a secret or policy violation is detected, SAIF halts transmission immediately and provides the developer with full control over override, in-place redaction, or clean termination.
 
 ---
 

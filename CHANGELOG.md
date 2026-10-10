@@ -11,8 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Native Antigravity IDE & Antigravity CLI (`agy`) Hook**:
-  - Direct in-process lifecycle hook (`saif.exe hook`) integrated via `~/.gemini/config/hooks.json`.
-  - Zero-egress `PreInvocation` interception: reads prompt payloads from `stdin` and halts turn execution with a formatted security warning before any bytes leave the workstation.
+  - Direct in-process lifecycle hook (`saif hook`) integrated via `~/.gemini/config/hooks.json` with zero proxy overhead or TLS certificate friction.
+  - **Native 3-Button Win32 CBT Modal Dialog**: Intercepts outbound prompt violations with an interactive desktop modal offering **[Break Glass]** (audited emergency override), **[Redact]** (in-place transcript sanitization with safe execution continuation), and **[Block]** (immediate transcript purge and Zero-Egress Circuit Breaker termination).
+  - **In-Place Stateless Transcript Sanitization**: Eliminates conversation history replay leaks by sanitizing sensitive tokens in `transcript_full.jsonl` immediately upon redaction or block, ensuring future conversation turns cannot inadvertently bundle confidential data.
+  - **Contiguous Turn Deduplication**: Automatically detects multi-step autonomous agent loops (`invocationNum > 0`) to prevent repetitive prompt dialogs across tool execution cycles.
   - Sub-5ms `PreToolUse` mediation: gates sensitive tools (`view_file`, `write_to_file`, `run_command`) over loopback HTTP (`POST /api/v1/hook`).
 - **Interactive Live Debug Wire Stream**:
   - New `--debug` CLI flag (`saif --debug`) streaming un-truncated raw JSON wire traffic for all incoming requests and outgoing decisions in real time.
