@@ -1,11 +1,11 @@
 # SAIF User Guide: Setup, Browser Onboarding & Operational Guide
 
 > **Documentation Index**:  
-> [**Overview**](../README.md) • [**Changelog (v1.0.1)**](../CHANGELOG.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+> [**Overview**](../README.md) • [**Changelog (v1.0.4)**](../CHANGELOG.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
 
 ---
 
-Welcome to the **SAIF Free Community Edition (Release v1.0.1)**! This guide walks you through setting up SAIF on your workstation in under 2 minutes.
+Welcome to the **SAIF Free Community Edition (Release v1.0.4)**! This guide walks you through setting up SAIF on your workstation in under 2 minutes.
 
 ---
 
@@ -39,8 +39,7 @@ flowchart LR
     classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399,rx:8px,ry:8px;
 ```
 
-
-1. Download **[`SAIF-Setup.exe`](../releases/SAIF-Setup.exe)** (Release v1.0.1, 19.69 MB).
+1. Download **[`SAIF-Setup.exe`](../releases/SAIF-Setup.exe)** (Release v1.0.4, 19.85 MB).
 2. Run `SAIF-Setup.exe`.
    - **No Administrator Rights Required**: SAIF runs 100% in your user space (`%LOCALAPPDATA%\Programs\SAIF`).
    - The installer automatically starts the background daemon and prepares your browser extension.
@@ -122,43 +121,127 @@ SAIF includes a three-mode Egress Policy Engine accessible via the extension pop
 
 ---
 
-## 6. IDE & CLI Tool Protection (Antigravity, Claude Code, Copilot, Cline)
+## 6. Antigravity IDE & Antigravity CLI (`agy`) Hook Setup
 
-SAIF protects developer AI tools directly inside your editor and terminal. When running the installer with **Full Developer Protection**, SAIF configures `NODE_EXTRA_CA_CERTS` and local proxy routing automatically.
+SAIF v1.0.4 integrates directly with **Google Antigravity IDE** and the **Antigravity CLI (`agy`)** through native lifecycle interception hooks.
 
-### Supported Tools:
-* **Antigravity IDE**: Inherits `NODE_EXTRA_CA_CERTS` and proxy settings automatically. Outbound code context, files attached to chat, and prompt completions are inspected locally.
-* **Claude Code (`@anthropic-ai/claude-code`)**: Inherits user-level environment variables; prompts and file reads are governed transparently.
-* **GitHub Copilot & Copilot Chat**: Protects outbound code context from leaking proprietary secrets or unredacted credentials.
-* **Cline, Roo Code & Continue.dev**: Compatible via standard proxy settings or custom `base_url` pointing to `http://127.0.0.1:18080/v1`.
+Unlike brittle HTTP proxies or TLS certificate injection that break Google Cloud certificate pinning, SAIF utilizes the official **Antigravity Hook Protocol (`PreInvocation`)**. Outbound user prompts and agent tool invocations are scanned synchronously in-memory before wire transmission. If sensitive data (API keys, PII, internal IP addresses, corporate secrets) is detected, SAIF returns Exit Code 2, preventing transmission and displaying an immediate remediation banner in the chat UI.
+
+### Configuration (`hooks.json`)
+
+To enable protection across all Antigravity sessions on your machine, configure your **Global Hooks** file (or colocated in individual workspaces):
+
+* **Global Path**: `%USERPROFILE%\.gemini\config\hooks.json`
+* **Workspace Path**: `<workspace-root>\.agents\hooks.json`
+
+Add the following configuration:
+
+```json
+{
+  "saif-firewall": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "\"%LOCALAPPDATA%\\Programs\\SAIF\\saif.exe\" hook",
+        "description": "Scans outbound prompts & conversation context before dispatch to LLM",
+        "timeout": 15
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "run_command|write_to_file|replace_file_content|multi_replace_file_content|view_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"%LOCALAPPDATA%\\Programs\\SAIF\\saif.exe\" hook",
+            "description": "Validates agent tool actions & code modifications before local execution",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+> [!TIP]
+> **Universal Path Notation & Tool Coverage**:  
+> * **`PreInvocation`**: Synchronously inspects human prompts and system context *before* transmission to cloud LLM providers, preventing confidential credentials or trade secrets from leaving your workstation.
+> * **`PreToolUse`**: Validates AI agent commands and file modifications *before* execution on your system (e.g. preventing unvetted shell execution or writing unsanitized secrets to disk).
+> * If `saif.exe` is already in your PATH, you can simplify the command to `"saif.exe hook"`. Ensure backslashes are escaped (`\\`) when using JSON file paths.
+
+### How It Works:
+1. **Zero Proxy Overhead**: Runs directly via stdin/stdout IPC without listening proxies or breaking TLS certificate pinning.
+2. **Synchronous Dual-Layer Interception**: Prompts and tool parameters are evaluated against the local Cedar policy engine and regex pattern manifest in < 5ms.
+3. **Fail-Closed Security with Break-Glass Override**: If a sensitive secret or policy violation is detected, SAIF halts transmission immediately and displays a desktop alert allowing the developer to authorize an audited emergency break-glass override or abort cleanly.
 
 ---
 
-## 7. Workstation CLI Commands
+## 7. Windows System Tray Controls
 
-Manage SAIF directly from your terminal (PowerShell, cmd, or bash):
+SAIF runs quietly in the Windows System Tray (notification area). Right-click the SAIF shield icon to manage protection and inspection profiles on the fly:
+
+| # | Tray Menu Control | Type | Description |
+|:---:|:---|:---:|:---|
+| **1** | **`SAIF Free Tier - Active / Paused`** | Status Header | Displays the live running state, daemon uptime, and port (`127.0.0.1:18080`). |
+| **2** | **`Protection Enabled`** | Toggle | Instant protection pause/resume toggle. When unchecked, firewall enters transparent bypass. |
+| **3** | **`Engine Profiles ▸`** | Submenu | Select active intelligence profile: **SAIF Light** (deterministic regex), **SAIF Neural** (512-token BERT cascade), or **SAIF Deep Neural** (8,192-token code scanner). |
+| **4** | **`Diagnostics ▸`** | Submenu | Run self-healing diagnostics: **Run Doctor Health Check** (terminal audit) or **Run System Repair** (environment cleanup). |
+| **5** | **`Stream Prompts / API Wire`** | Action | Spawns a dedicated PowerShell streaming terminal displaying live wire payloads, DLP tokens, and AI egress events. |
+| **6** | **`Open Web Dashboard`** | Action | Opens the local Next.js telemetry & audit log portal in your default browser (`http://127.0.0.1:18080/dashboard`). |
+| **7** | **`Documentation & Guide`** | Action | Opens the local offline User Setup Guide and operational documentation. |
+| **8** | **`About SAIF Free Tier`** | Dialog | Displays current version (`v1.0.4`), local build hash, license terms, and community support links. |
+| **9** | **`Exit SAIF`** | Action | Gracefully terminates the background daemon process and releases local port bindings. |
+
+---
+
+## 8. Workstation CLI Reference
+
+SAIF is fully manageable from any terminal (PowerShell, Command Prompt, Windows Terminal, or bash):
 
 ```powershell
-# Check agent status, listening port, and active model profile
-saif status
+# 1. Daemon Health & Status
+saif status              # Check agent status, listening port, and active model profile
+saif doctor              # Run passive 5-point diagnostic health check
 
-# Pause firewall protection (transparent bypass mode)
-saif off                 # Pause indefinitely
-saif pause 15m           # Pause for 15 minutes (or 5m, 1h)
+# 2. Protection Controls
+saif on                  # Resume active inspection and DLP enforcement
+saif off                 # Pause firewall protection indefinitely (transparent bypass)
+saif pause 15m           # Temporarily snooze protection for 15 minutes (or 5m, 1h)
 
-# Resume active inspection and DLP enforcement
-saif on
+# 3. Native IDE Hook Interceptor
+saif hook                # Evaluates JSON hook payloads from Antigravity IDE / agy CLI via stdin
 
-# Run a passive 5-point diagnostic health check
-saif doctor
+# 4. Self-Healing & Diagnostics
+saif repair              # Run active self-healing (cleans stale proxies and trust store)
+saif repair --dry-run    # Preview repair actions without modifying environment
 
-# Automatically repair certificates, trust store, and environment variables
-saif repair              # Run active self-healing
-saif repair --dry-run    # Preview actions without modifying system
+# 5. Runtime Flags
+saif --debug             # Start daemon with verbose live debug logging enabled
+saif --profile neural    # Launch with specific profile (light | neural | deep)
+saif --version           # Display binary version and release build metadata
+saif --help              # Display comprehensive command help
 ```
 
 ---
 
-## 8. macOS and Linux Support
+## 9. Supported Environments & Ecosystem Roadmap
 
-Windows is the initial launch platform for the Public Beta. Native packages for **macOS (Apple Silicon & Intel DMG)** and **Linux (deb / rpm / systemd)** are currently under active development on our near-term roadmap.
+SAIF is committed to securing AI developer workflows across all modern IDEs, CLI tools, and web interfaces:
+
+| Environment | Integration Mechanism | Status | Notes |
+|:---|:---|:---:|:---|
+| **Google Chrome / Chromium / Edge / Brave** | Manifest V3 Edge Interceptor | **Live (v1.0.4)** | Full front-door modal interception, redaction, and egress gating. |
+| **Google Antigravity IDE** | Native `PreInvocation` Hook | **Live (v1.0.4)** | Direct lifecycle hook integration; zero proxy or TLS certificate friction. |
+| **Antigravity CLI (`agy`)** | Native CLI Hook Protocol | **Live (v1.0.4)** | Terminal prompt & context streaming protection. |
+| **OpenAI Codex & Codex CLI** | Native Stdin Interceptor & Wrapper | **Active Development** | Dedicated pre-submission security wrapper. |
+| **Cursor IDE** | Custom Extension & Agent Hook | **Active Development** | Intercepts agent composer and multi-file code attachments. |
+| **Anthropic Claude Code** | Terminal Interceptor | **Active Development** | Direct prompt and tool execution inspection. |
+| **JetBrains (IntelliJ, PyCharm, WebStorm)** | Native Plugin SDK Interceptor | **Active Development** | JVM-level AI assistant egress security module. |
+
+---
+
+## 10. macOS and Linux Support
+
+Windows is the primary platform for the current release. Native packages for **macOS (Apple Silicon & Intel DMG)** and **Linux (deb / rpm / systemd)** are currently under active development.
+

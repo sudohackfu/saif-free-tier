@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.4] - 2026-10-09
+
+### Added
+- **Native Antigravity IDE & Antigravity CLI (`agy`) Hook**:
+  - Direct in-process lifecycle hook (`saif.exe hook`) integrated via `~/.gemini/config/hooks.json`.
+  - Zero-egress `PreInvocation` interception: reads prompt payloads from `stdin` and halts turn execution with a formatted security warning before any bytes leave the workstation.
+  - Sub-5ms `PreToolUse` mediation: gates sensitive tools (`view_file`, `write_to_file`, `run_command`) over loopback HTTP (`POST /api/v1/hook`).
+- **Interactive Live Debug Wire Stream**:
+  - New `--debug` CLI flag (`saif --debug`) streaming un-truncated raw JSON wire traffic for all incoming requests and outgoing decisions in real time.
+  - Dedicated "View Live Traffic Stream (Terminal)..." tray menu item launching an external terminal for real-time visibility.
+- **Windows System Tray Overhaul**:
+  - Full management of resident daemon from the notification tray: master protection toggle, Antigravity IDE hook toggle, 4-tier snooze timers (5m, 15m, 1h, indefinite), Model Triad profile hot-swapping, Windows startup toggle, and update notifications.
+- **Automated Workstation Auto-Healing**:
+  - Upgrading to v1.0.4 automatically purges any stale proxy environment variables (`HTTP_PROXY`, `HTTPS_PROXY`, `NODE_EXTRA_CA_CERTS`, `SSL_CERT_FILE`) and deletes legacy self-signed root CAs from the Windows trust store.
+- **Automatic User PATH Integration**:
+  - Installer automatically registers `%LOCALAPPDATA%\Programs\SAIF` into the user's `PATH` environment variable.
+- **Finished Screen Browser Onboarding**:
+  - Installer offers an opt-out checkbox on the completion screen to open the Antigravity IDE Setup Guide in the default browser.
+
+### Removed
+- **Purge of Proxy Break-and-Inspect**:
+  - Completely eradicated network-level TLS proxying, PAC proxy configuration (`AutoConfigURL`), and self-signed Root CA generation from installer and daemon runtime.
+  - Eliminated the confusing "Protection Scope" installer wizard screen in favor of a clean, single-action frictionless EULA install.
+
+### Fixed
+- **Fixed Google Cloud Certificate Pinning Conflicts**:
+  - Resolved fatal `SSL_PIN_FAILED` and connection reset errors in Antigravity IDE, Google Cloud Code, and gRPC runtimes caused by legacy proxy interception in v1.0.2/v1.0.3.
+
+---
+
 ## [1.0.1] - 2026-09-28
 
 ### Added

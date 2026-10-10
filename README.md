@@ -1,7 +1,7 @@
 # Semantic AI Firewall (SAIF)
 ### The Zero-Trust Generative AI Security Layer for Developers
 
-[![Release: v1.0.1](https://img.shields.io/badge/Release-v1.0.1-blue.svg)](releases/SAIF-Setup.exe)
+[![Release: v1.0.4](https://img.shields.io/badge/Release-v1.0.4-blue.svg)](releases/SAIF-Setup.exe)
 [![License: MIT](https://img.shields.io/badge/Benchmark%20License-MIT-green.svg)](LICENSE.md)
 [![EULA: Community](https://img.shields.io/badge/Binary%20License-Community%20EULA-purple.svg)](EULA.md)
 [![Latency SLA](https://img.shields.io/badge/P50%20Latency-%3C15ms-brightgreen.svg)](docs/BENCHMARK.md)
@@ -11,27 +11,29 @@
 **100% On-Device Prompt Interception • Zero Cloud Dependencies • Zero Telemetry**
 
 > **Documentation Index**:  
-> [**Overview**](README.md) • [**Changelog (v1.0.1)**](CHANGELOG.md) • [**Architecture Diagrams**](docs/ARCHITECTURE.md) • [**User Guide**](docs/USER_GUIDE.md) • [**Benchmark Whitepaper**](docs/BENCHMARK.md) • [**Rule Catalog**](docs/RULE_CATALOG.md) • [**Overrides & Snoozing**](docs/OVERRIDES_AND_SNOOZE.md) • [**FAQ**](docs/FAQ.md) • [**Benchmark Suite**](benchmark/README.md) • [**Empirical Report**](BENCHMARK_REPORT.md) • [**Community EULA**](EULA.md) • [**MIT License**](LICENSE.md)
+> [**Overview**](README.md) • [**Changelog (v1.0.4)**](CHANGELOG.md) • [**Architecture Diagrams**](docs/ARCHITECTURE.md) • [**User Guide**](docs/USER_GUIDE.md) • [**Benchmark Whitepaper**](docs/BENCHMARK.md) • [**Rule Catalog**](docs/RULE_CATALOG.md) • [**Overrides & Snoozing**](docs/OVERRIDES_AND_SNOOZE.md) • [**FAQ**](docs/FAQ.md) • [**Benchmark Suite**](benchmark/README.md) • [**Empirical Report**](BENCHMARK_REPORT.md) • [**Community EULA**](EULA.md) • [**MIT License**](LICENSE.md)
 
 ---
 
-## Download & Quickstart (Release v1.0.1)
+## Download & Quickstart (Release v1.0.4)
 
 | Asset | Platform / Target | Size | Description |
 | :--- | :--- | :--- | :--- |
-| **[`SAIF-Setup.exe`](releases/SAIF-Setup.exe)** | Windows 10 / 11 (64-bit) | 19.76 MB | Native Inno Setup single-action installer with Scope Selection (Full Developer Protection or Browser Only, Zero UAC). |
+| **[`SAIF-Setup.exe`](releases/SAIF-Setup.exe)** | Windows 10 / 11 (64-bit) | 19.85 MB | Native Inno Setup single-action installer (Zero UAC, zero proxy, native IDE hook, automatic PATH integration). |
 | **[`saif-extension.zip`](releases/saif-extension.zip)** | Chromium (Chrome, Brave, Edge) | 124.6 KB | Pre-packaged Manifest V3 browser extension for unpacked developer installation. |
 
 ```powershell
 # Quick install: execute user-space installer (no administrator privileges required)
 Start-Process .\releases\SAIF-Setup.exe
 
-# Terminal control commands (available after installation)
+# Terminal control commands (available immediately in any terminal via user PATH)
 saif status      # Check agent state, listening port, and active model profile
 saif pause 15m   # Temporarily pause firewall (transparent bypass mode)
 saif on          # Resume active inspection and DLP enforcement
+saif hook        # Native in-process hook bridge for Antigravity IDE and agy CLI
 saif doctor      # Run 5-point workstation diagnostic health check
-saif repair      # Auto-remediate certificates, trust store, and environment
+saif repair      # Auto-remediate workstation issues & clean legacy proxy variables
+saif --debug     # Live interactive terminal wire stream (raw un-truncated JSON)
 ```
 
 For complete setup and IDE onboarding, see the [**User Guide**](docs/USER_GUIDE.md).  
@@ -216,12 +218,14 @@ flowchart LR
         W1["Browser Extension (Chrome / Edge / Brave)"]
         W2["Omnibox Search Interception"]
         W3["Go Workstation Daemon (:18080)"]
+        W4["Antigravity IDE & agy CLI Native Hooks"]
     end
 
-    subgraph Phase2["In Development: Developer OS"]
-        D1["VS Code & JetBrains IDE Sensors"]
-        D2["Inline LSP Gutter Warnings"]
-        D3["Kernel & Socket Filtering (WFP / eBPF)"]
+    subgraph Phase2["In Development: Developer Ecosystem"]
+        D1["OpenAI Codex & VS Code LSP Bridge"]
+        D2["Cursor & Windsurf Extension Hooks"]
+        D3["Claude Code CLI Pre-Hook Wrapper"]
+        D4["JetBrains (IntelliJ / PyCharm) Sensor"]
     end
 
     subgraph Phase3["Next-Gen: Multi-Modal & Agents"]
@@ -241,15 +245,14 @@ flowchart LR
     class Phase3 future;
 ```
 
-### 1. IDE Extensions & LSP Interceptors (In Active Development)
-* **VS Code & JetBrains Native Sensors**: Inline prompt scanning directly within developer IDEs, catching sensitive data before it reaches AI assistants like GitHub Copilot, Cursor, or Continue.dev.
-* **LSP-Native In-Editor Gutter Alerts**: Instant highlighting of exposed secrets in editor buffers with quick-fix redactions.
+### 1. Supported Environments & Ecosystem Roadmap
+* **Antigravity IDE & Antigravity CLI (`agy`) [Live Today]**: Native zero-egress in-process hook (`saif hook`) gating prompts and tools before network transmission.
+* **OpenAI Codex & VS Code LSP Bridge [In Active Development]**: Dedicated Language Server Protocol proxy providing gutter alerts and pre-submission mediation.
+* **Cursor & Windsurf [In Active Development]**: In-process extension hook bridge for modern agentic IDEs.
+* **Claude Code (`@anthropic-ai/claude-code`) [In Active Development]**: Pre-execution shell wrapper enforcing DLP on prompts and tool executions.
+* **JetBrains IDE Plugin [On Roadmap]**: Native plugin for IntelliJ IDEA, PyCharm, and WebStorm connecting to loopback daemon (`127.0.0.1:18080`).
 
-### 2. Transparent OS Network & Socket-Level Interception
-* **Kernel & Socket Filtering Drivers**: Moving beyond browser extensions to transparent OS-level packet interception (Windows Filtering Platform [WFP], macOS NetworkExtension, Linux eBPF).
-* **Zero-Config CLI & Script Protection**: Transparently inspects outbound AI API calls from `curl`, Python scripts, terminal clients, and background worker daemons without requiring manual proxy configuration.
-
-### 3. Next-Generation Inspection Surfaces
+### 2. Next-Generation Inspection Surfaces
 * **Multi-Modal Clipboard OCR & Screenshot DLP**: Extracts and scans text from pasted screenshots, whiteboard photos, and architecture diagrams before vision models ingest them.
 * **Deep Document Sanitization**: Pre-flight text extraction and inspection for PDF, DOCX, and XLSX attachments dropped into web AI chats.
 * **Model Context Protocol (MCP) Tool Firewall**: Enforces Cedar authorization guardrails on autonomous agent tool invocations, protecting against indirect prompt injection attacks.
