@@ -134,13 +134,17 @@ To enable protection across all Antigravity sessions on your machine, configure 
 * **Global Path**: `%USERPROFILE%\.gemini\config\hooks.json`
 * **Workspace Path**: `<workspace-root>\.agents\hooks.json`
 
-> [!IMPORTANT]
-> **UTF-8 Encoding (No BOM)**:  
-> Antigravity's Go hook loader requires `hooks.json` to be saved strictly as **UTF-8 without BOM**. If saved with a UTF-8 BOM, the loader fails to parse the configuration (`invalid character '\ufeff'`). In PowerShell, write using `[System.IO.File]::WriteAllText($path, $json, (New-Object System.Text.UTF8Encoding($false)))`.
+> [!WARNING]
+> **Encoding Critical Requirement: Save as UTF-8 (NO BOM)**:  
+> `hooks.json` **MUST** be saved strictly as **UTF-8 without BOM** (pure UTF-8, **not** `UTF-8 with BOM` / `UTF-8-BOM`).  
+> If saved with a UTF-8 BOM (`0xEF 0xBB 0xBF`), Antigravity's Go JSON parser will fail on startup with `invalid character '\ufeff' looking for beginning of value` and silently ignore or reject all configured lifecycle hooks!  
+> * **In VS Code / Antigravity IDE**: Look at the bottom right status bar. If it shows `UTF-8 with BOM`, click it and select **Save with Encoding** ➔ **UTF-8**.  
+> * **In PowerShell**: Do **not** use `Set-Content -Encoding UTF8` (Windows PowerShell 5.1 inserts a BOM). Use:  
+>   `[System.IO.File]::WriteAllText($path, $json, [System.Text.UTF8Encoding]::new($false))`
 
-> [!TIP]
-> **Command Quoting on Windows**:  
-> Because Antigravity invokes hook commands via `cmd.exe /c`, do **not** wrap the command string in escaped outer quotes (such as `"\"...\" hook"`). Simply specify `"command": "saif hook"` since `%LOCALAPPDATA%\Programs\SAIF` is automatically added to your user `PATH` by the installer.
+> [!IMPORTANT]
+> **Executable Path Specification**:  
+> Configure `"command"` using the full absolute path to `saif.exe`, replacing `<username>` with your Windows account name (e.g. `C:\\Users\\<username>\\AppData\\Local\\Programs\\SAIF\\saif.exe hook`). Specifying the full path guarantees that Antigravity launches the hook reliably even before the IDE reloads the user `PATH` environment variable. In JSON, backslashes must be escaped (`\\`).
 
 Add the following configuration:
 
@@ -150,7 +154,7 @@ Add the following configuration:
     "PreInvocation": [
       {
         "type": "command",
-        "command": "saif hook",
+        "command": "C:\\Users\\<username>\\AppData\\Local\\Programs\\SAIF\\saif.exe hook",
         "description": "Scans outbound prompts & conversation context before dispatch to LLM",
         "timeout": 15
       }
@@ -161,7 +165,7 @@ Add the following configuration:
         "hooks": [
           {
             "type": "command",
-            "command": "saif hook",
+            "command": "C:\\Users\\<username>\\AppData\\Local\\Programs\\SAIF\\saif.exe hook",
             "description": "Validates agent tool actions & code modifications before local execution",
             "timeout": 5
           }
