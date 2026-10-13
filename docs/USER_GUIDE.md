@@ -1,11 +1,11 @@
 # SAIF User Guide: Setup, Browser Onboarding & Operational Guide
 
 > **Documentation Index**:  
-> [**Overview**](../README.md) • [**Changelog (v1.0.4)**](../CHANGELOG.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+> [**Overview**](../README.md) • [**Changelog (v1.0.5)**](../CHANGELOG.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
 
 ---
 
-Welcome to the **SAIF Free Community Edition (Release v1.0.4)**! This guide walks you through setting up SAIF on your workstation in under 2 minutes.
+Welcome to the **SAIF Free Community Edition (Release v1.0.5)**! This guide walks you through setting up SAIF on your workstation in under 2 minutes.
 
 ---
 
@@ -39,7 +39,7 @@ flowchart LR
     classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399,rx:8px,ry:8px;
 ```
 
-1. Download **[`SAIF-Setup.exe`](../releases/SAIF-Setup.exe)** (Release v1.0.4, 19.85 MB).
+1. Download **[`SAIF-Setup.exe`](../releases/SAIF-Setup.exe)** (Release v1.0.5, 19.90 MB).
 2. Run `SAIF-Setup.exe`.
    - **No Administrator Rights Required**: SAIF runs 100% in your user space (`%LOCALAPPDATA%\Programs\SAIF`).
    - The installer automatically starts the background daemon and prepares your browser extension.
@@ -79,7 +79,7 @@ Because SAIF is an open-source security tool distributed directly via GitHub, it
 
 ---
 
-## 3. Verifying Protection
+## 3. Verifying Protection & The Unified Triage Experience
 
 Once the extension is loaded, test your protection immediately:
 
@@ -88,11 +88,20 @@ Once the extension is loaded, test your protection immediately:
    - [Claude (claude.ai)](https://claude.ai)
    - [Google Gemini (gemini.google.com)](https://gemini.google.com)
    - [DeepSeek (chat.deepseek.com)](https://chat.deepseek.com)
-2. Try typing a mock AWS access key:
+2. Try typing a mock AWS access key or composite test prompt:
    ```text
-   AKIAIOSFODNN7EXAMPLE
+   Review this deployment config: AWS key AKIAIOSFODNN7EXAMPLE and SSN 123-45-6789.
    ```
-3. Click Send. SAIF intercepts the prompt before it leaves your browser, displays the in-page shield modal, and offers local redaction or a deliberate break-glass override.
+3. Click **Send**.
+4. SAIF halts the outbound submission in-browser and mounts the **Unified Webview Triage Modal** (`triage.html`):
+   - **Composite Threat Badges**: Clear visual differentiation between deterministic regex DLP matches (`[REGEX_DLP]`) and on-device semantic policy violations (`[SEMANTIC_ONNX]`).
+   - **Interactive Accordion Inspection**: Expand any detected category to review individual match occurrences, attributed sentence spans, and sample tokens.
+   - **Live Multiline Diff Preview (`#diff-preview`)**: Displays a real-time before/after preview highlighting masked token tags (`[REDACTED: ...]`).
+   - **Keyboard & Batch Actions**:
+     - **`Enter` / `R` (Redact All)**: Sanitizes all detected violations in descending character offset order, replaces text in the composer, and preserves paragraph layouts.
+     - **`B` (Break-Glass)**: Authorizes an audited emergency override with justification logging.
+     - **`Esc` (Cancel / Dismiss)**: Closes the modal and keeps the original prompt safely contained on your workstation.
+   - **Rich-Text Composer Fidelity**: Automatically handles complex DOM inputs (such as Google Gemini's `<rich-textarea>`), preserving line breaks (`<p><br></p>`) and preventing character displacement.
 
 ---
 
@@ -123,7 +132,7 @@ SAIF includes a three-mode Egress Policy Engine accessible via the extension pop
 
 ## 6. Antigravity IDE & Antigravity CLI (`agy`) Hook Setup
 
-SAIF v1.0.4 integrates directly with **Google Antigravity IDE** and the **Antigravity CLI (`agy`)** through native lifecycle interception hooks.
+SAIF v1.0.5 integrates directly with **Google Antigravity IDE** and the **Antigravity CLI (`agy`)** through native lifecycle interception hooks.
 
 Unlike brittle HTTP proxies or TLS certificate injection that break Google Cloud certificate pinning, SAIF utilizes the official **Antigravity Hook Protocol (`PreInvocation` and `PreToolUse`)**. Outbound user prompts and agent tool invocations are scanned synchronously in-memory before wire transmission. If sensitive data (API keys, PII, internal IP addresses, corporate secrets) is detected, SAIF triggers native desktop triage or blocks execution before any bytes leave the workstation.
 
@@ -176,19 +185,19 @@ Add the following configuration:
 }
 ```
 
-### Native 3-Button Break-Glass Triage Dialog
+### Standalone Desktop Triage Window & Decision Matrix
 
-When a sensitive secret or policy violation is detected in an outbound user prompt during `PreInvocation`, SAIF displays an interactive native Win32 dialog offering three distinct actions:
+When a sensitive secret or policy violation is detected in an outbound user prompt during `PreInvocation`, `saif hook` creates a triage session (`POST /api/v1/triage/create`) and launches a standalone desktop triage window via Microsoft Edge webview (`msedge.exe --app=http://127.0.0.1:18080/triage?session=<id>`), falling back to a native Win32 dialog if unavailable:
 
-| Action | Button | Behavior & Guarantees |
+| Action | Control / Hotkey | Behavior & Guarantees |
 | :--- | :---: | :--- |
-| **Break Glass** | **`[Break Glass]`** | Authorizes an audited emergency override. Logs the security override event to the local SAIF daemon audit trail and permits the prompt to transmit raw to the AI service. |
-| **Redact** | **`[Redact]`** | Sanitizes sensitive tokens in-place directly within the active session transcript (`transcript_full.jsonl`) with masked labels (e.g., `[REDACTED_SSN]`), posts an ephemeral notification in the chat UI, and proceeds with the safe sanitized turn. |
-| **Block** | **`[Block]`** | Immediately purges the sensitive violation from the local session transcript (`transcript_full.jsonl`) so subsequent turns cannot accidentally bundle or leak the confidential text, then halts the turn cleanly via a circuit breaker error step. |
+| **Sanitize & Proceed** | **`Enter` / `R`** | Automatically sanitizes sensitive tokens in descending byte order using an interval-containment algorithm, synchronizes transcripts (`transcript.jsonl` and `transcript_full.jsonl`), issues an `OverrideLease`, and allows the sanitized turn to dispatch safely. |
+| **Break Glass** | **`B`** | Authorizes an audited emergency override. Logs justification to the local daemon audit trail, issues an `OverrideLease`, and permits the raw prompt to transmit. |
+| **Cancel / Block** | **`Esc`** | Suppresses the outbound prompt with an ephemeral warning notification, maintaining session continuity without terminating the assistant. |
 
 > [!NOTE]
-> **Stateless Chat Replay Prevention & Deduplication**:  
-> Cloud LLM chats are stateless; each subsequent turn bundles and re-transmits the complete conversation transcript. By immediately sanitizing `transcript_full.jsonl` upon **Redact** or **Block**, SAIF guarantees that aborted or sanitized secrets are never leaked in subsequent queries. In addition, multi-turn agent execution loops (`invocationNum > 0`) are automatically deduplicated so you are only prompted once per user submission.
+> **Single-Trip Override Lease (`OverrideLease`)**:  
+> Resolving a triage session generates an ephemeral, in-memory `OverrideLease` token linked to the prompt hash. When the IDE re-transmits the approved or sanitized prompt, the local daemon validates the lease and skips redundant inspection, ensuring developers are never prompted twice for the same turn.
 
 ### How It Works:
 1. **Zero Proxy Overhead**: Runs directly via stdin/stdout IPC without listening proxies or breaking TLS certificate pinning.
@@ -210,7 +219,7 @@ SAIF runs quietly in the Windows System Tray (notification area). Right-click th
 | **5** | **`Stream Prompts / API Wire`** | Action | Spawns a dedicated PowerShell streaming terminal displaying live wire payloads, DLP tokens, and AI egress events. |
 | **6** | **`Open Web Dashboard`** | Action | Opens the local Next.js telemetry & audit log portal in your default browser (`http://127.0.0.1:18080/dashboard`). |
 | **7** | **`Documentation & Guide`** | Action | Opens the local offline User Setup Guide and operational documentation. |
-| **8** | **`About SAIF Free Tier`** | Dialog | Displays current version (`v1.0.4`), local build hash, license terms, and community support links. |
+| **8** | **`About SAIF Free Tier`** | Dialog | Displays current version (`v1.0.5`), local build hash, license terms, and community support links. |
 | **9** | **`Exit SAIF`** | Action | Gracefully terminates the background daemon process and releases local port bindings. |
 
 ---
@@ -251,9 +260,9 @@ SAIF is committed to securing AI developer workflows across all modern IDEs, CLI
 
 | Environment | Integration Mechanism | Status | Notes |
 |:---|:---|:---:|:---|
-| **Google Chrome / Chromium / Edge / Brave** | Manifest V3 Edge Interceptor | **Live (v1.0.4)** | Full front-door modal interception, redaction, and egress gating. |
-| **Google Antigravity IDE** | Native `PreInvocation` Hook | **Live (v1.0.4)** | Direct lifecycle hook integration; zero proxy or TLS certificate friction. |
-| **Antigravity CLI (`agy`)** | Native CLI Hook Protocol | **Live (v1.0.4)** | Terminal prompt & context streaming protection. |
+| **Google Chrome / Chromium / Edge / Brave** | Manifest V3 Edge Interceptor | **Live (v1.0.5)** | Full front-door modal interception, redaction, and egress gating. |
+| **Google Antigravity IDE** | Native `PreInvocation` Hook | **Live (v1.0.5)** | Direct lifecycle hook integration; zero proxy or TLS certificate friction. |
+| **Antigravity CLI (`agy`)** | Native CLI Hook Protocol | **Live (v1.0.5)** | Terminal prompt & context streaming protection. |
 | **OpenAI Codex & Codex CLI** | Native Stdin Interceptor & Wrapper | **Active Development** | Dedicated pre-submission security wrapper. |
 | **Cursor IDE** | Custom Extension & Agent Hook | **Active Development** | Intercepts agent composer and multi-file code attachments. |
 | **Anthropic Claude Code** | Terminal Interceptor | **Active Development** | Direct prompt and tool execution inspection. |

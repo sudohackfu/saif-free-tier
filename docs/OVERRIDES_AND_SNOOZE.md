@@ -1,7 +1,7 @@
 # SAIF Overrides, Snoozing & Local Audit History
 
 > **Documentation Index**:  
-> [**Overview**](../README.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+> [**Overview**](../README.md) • [**Changelog (v1.0.5)**](../CHANGELOG.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
 
 ---
 
@@ -9,64 +9,44 @@ SAIF is designed for **developer velocity**. Security controls should never bloc
 
 ---
 
-## 1. Break-Glass Override Workflow
+## 1. Unified Triage & Override Decision Matrix
 
-When SAIF intercepts an outbound prompt, an in-page shield modal appears over the AI chat:
+When SAIF intercepts an outbound prompt—either inside a web AI chatroom via the browser extension or out-of-browser via the Antigravity IDE hook—it presents the **v1.0.5 Composite Threat Triage Modal**:
 
 <p align="center">
   <a href="screenshots/inpage_ai_chat_interception.png" title="Click to view full resolution">
-    <img src="screenshots/inpage_ai_chat_interception.png" alt="SAIF In-Page Security Shield Modal" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+    <img src="screenshots/inpage_ai_chat_interception.png" alt="SAIF Unified Webview Triage Modal" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
   </a>
   <br>
-  <sub><em>(Click image to view full resolution)</em></sub>
+  <sub><em>(In-Browser Unified Webview Triage Modal)</em></sub>
 </p>
 
-### Override Sequence Workflow
+### Decision Matrix & Controls
 
-```mermaid
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'darkMode': true,
-    'background': '#09090b',
-    'actorBkg': '#18181b',
-    'actorBorder': '#3b82f6',
-    'actorTextColor': '#60a5fa',
-    'actorLineColor': '#38bdf8',
-    'signalColor': '#38bdf8',
-    'signalTextColor': '#e4e4e7',
-    'noteBkgColor': '#18181b',
-    'noteBorderColor': '#3b82f6',
-    'noteTextColor': '#f4f4f5',
-    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif',
-    'fontSize': '13px'
-  }
-}}%%
-sequenceDiagram
-    autonumber
-    actor Dev as 👨‍💻 Developer
-    participant Modal as 🛡️ In-Page Shield Modal
-    participant Sensor as 🧩 Extension Interceptor
-    participant Daemon as ⚡ saif.exe (Local Daemon)
-    participant AI as ☁️ AI Web App (Claude/ChatGPT)
+Developers have four distinct options when a violation is flagged:
 
-    Note over Dev,Modal: Sensitive Token Intercepted & Blocked
-    Modal-->>Dev: Displays Block Card ("AWS Secret Key Detected")
-    Dev->>Modal: Clicks "Break-Glass Override"
-    Modal->>Dev: Prompts for developer justification
-    Dev->>Modal: Enters reason ("Testing mock credentials in dev")
-    Modal->>Daemon: POST /v1/override (token, justification)
-    Daemon->>Daemon: Log event to local audit store & issue single-use nonce
-    Daemon-->>Sensor: { status: "AUTHORIZED", nonce: "uuid-v4" }
-    Sensor->>Modal: Close Shield Modal
-    Sensor->>AI: Release original prompt payload
-    AI-->>Dev: Prompt delivered (AI streaming begins)
-```
+| Remediation Action | Keyboard / Hotkey | Operational Behavior | Single-Trip Guarantee |
+| :--- | :---: | :--- | :--- |
+| **Sanitize Prompt (Redact All)** | **`Enter` / `R`** | Replaces all detected violations in descending character offset order with masked tags (e.g. `[REDACTED: pii_national_id]`). Preserves exact multi-line paragraph layout (`<p><br></p>`). | Issues `OverrideLease` for sanitized hash; bypasses redundant scans on resubmit. |
+| **Break-Glass Emergency Override** | **`B`** | Logs an audited bypass event locally and permits the raw prompt to egress to the AI service. | Issues single-trip `OverrideLease` to prevent re-blocking on turn dispatch. |
+| **Granular Accordion Overrides** | **Click Accordion** | Expand individual rule drawers to inspect matched text spans, sample tokens, and toggle specific matches on or off individually before applying. | Customized mask applied; un-checked tokens preserved raw. |
+| **Cancel / Block** | **`Esc`** | Closes the modal. The original text remains safe on the workstation without transmitting any bytes upstream. | Prompt remains un-transmitted. |
 
-### How Override Works
-1. Clicking **Break-Glass Override** prompts for an optional one-line developer reason (e.g., *"Testing with dummy sandbox credentials"*).
-2. The prompt immediately unblocks and transits directly to the AI service.
-3. The override event is recorded locally in your workstation audit log with a timestamp and the user reason.
+<p align="center">
+  <a href="screenshots/desktop_triage_modal_accordion.png" title="Click to view full resolution">
+    <img src="screenshots/desktop_triage_modal_accordion.png" alt="Accordion Expanded Match Inspection" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(Desktop Triage Modal: Granular Accordion Controls & Live Diff Preview)</em></sub>
+</p>
+
+### How the Single-Trip Override Lease Works
+1. When you select **Break-Glass** or **Sanitize Prompt**, SAIF generates an ephemeral, in-memory **`OverrideLease`** token bound to the specific prompt hash or session ID.
+2. The browser extension or IDE hook immediately dispatches the turn.
+3. As the outgoing HTTP request leaves the workstation, the local daemon (`saif.exe :18080`) checks the active lease ring buffer:
+   - If an active lease matches the prompt hash, inspection is skipped and the request transits smoothly.
+   - The lease is consumed upon transmission, ensuring zero leakage on subsequent turns.
+4. The override or redaction action is committed to your local workstation audit log (`%LOCALAPPDATA%\saif\spool.db`).
 
 ---
 

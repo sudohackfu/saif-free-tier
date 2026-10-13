@@ -49,24 +49,37 @@ flowchart TB
             CS <-->|"Internal IPC"| BG
         end
 
-        subgraph LocalDaemon ["⚡ Local SAIF Daemon (saif.exe on 127.0.0.1:44321)"]
-            PROXY["Local HTTP Server<br/><b>Loopback Endpoint</b>"]:::blueNode
+        subgraph LocalDaemon ["⚡ Local SAIF Daemon (saif.exe on 127.0.0.1:18080)"]
+            PROXY["Local HTTP Server<br/><b>Loopback Endpoint (:18080)</b>"]:::blueNode
             NORM["Syntactic Normalizer<br/><b>Base64, Hex, Homoglyphs & AST</b>"]:::amberNode
-            DLP["Tier 1: Pre-compiled DLP Engine<br/><b>27+ High-Speed Regex Rules (<1ms)</b>"]:::cyanNode
+            DLP["Tier 1: Pre-compiled DLP Engine<br/><b>42+ High-Speed Regex Rules (<1ms)</b>"]:::cyanNode
             ENTROPY["Tier 2: Algorithmic Verification<br/><b>Shannon Entropy & Luhn Checksums (<3ms)</b>"]:::purpleNode
-            ONNX["Tier 3: Local ONNX Transformer<br/><b>Neural Semantic Classifier (<10ms)</b>"]:::purpleNode
+            ONNX["Tier 3: Local ONNX Transformer<br/><b>Model Triad (Light / Neural / Deep)</b>"]:::purpleNode
             DECIDE["Cedar Zero-Trust Engine<br/><b>Default-Deny Policy Arbitration</b>"]:::greenNode
-            AUDIT[("Encrypted Audit Store<br/><b>Local Workstation SQLite</b>")]:::slateNode
+            LEASE["OverrideLease Ring Buffer<br/><b>Single-Trip Resubmission Cache</b>"]:::cyanNode
+            AUDIT[("Encrypted Audit Store<br/><b>Local Workstation Spool Ring</b>")]:::slateNode
 
             PROXY --> NORM
             NORM --> DLP
             DLP --> ENTROPY
             ENTROPY --> ONNX
             ONNX --> DECIDE
+            DECIDE --> LEASE
             DECIDE --> AUDIT
         end
 
-        BG <-->|"Loopback REST / WebSocket"| PROXY
+        subgraph IDETier ["💻 Desktop IDE & CLI Assistants (PEP 2)"]
+            IDE["Google Antigravity IDE / agy CLI"]:::blueNode
+            HOOK["saif.exe hook<br/><b>PreInvocation & PreToolUse</b>"]:::cyanNode
+            WIN["Standalone Desktop Triage Window<br/><b>msedge.exe --app Webview</b>"]:::redNode
+
+            IDE -->|"Prompt Submitted"| HOOK
+            HOOK <-->|"POST /api/v1/hook"| PROXY
+            HOOK -->|"Violation Detected"| WIN
+            WIN -->|"Action Decision"| PROXY
+        end
+
+        BG <-->|"Loopback REST (150ms timeout)"| PROXY
     end
 
     subgraph CloudAI ["☁️ External Generative AI Cloud"]
@@ -239,7 +252,7 @@ flowchart TD
 
     subgraph NeuralLayer ["Local ONNX Semantic Transformer (<10ms)"]
         TIER3 --> EMBED["Local Tokenizer & Embedding Engine"]:::purpleNode
-        EMBED --> ONNX_ENG["SAIF Engineer ONNX Model"]:::purpleNode
+        EMBED --> ONNX_ENG["SAIF Neural / Deep Neural ONNX Model"]:::purpleNode
         ONNX_ENG --> INTENT["Semantic Context & Intent Classifier"]:::purpleNode
     end
 

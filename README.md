@@ -19,8 +19,8 @@
 
 | Asset | Platform / Target | Size | Description |
 | :--- | :--- | :--- | :--- |
-| **[`SAIF-Setup.exe`](releases/SAIF-Setup.exe)** | Windows 10 / 11 (64-bit) | 19.85 MB | Native Inno Setup single-action installer (Zero UAC, zero proxy, native IDE hook, automatic PATH integration). |
-| **[`saif-extension.zip`](releases/saif-extension.zip)** | Chromium (Chrome, Brave, Edge) | 124.6 KB | Pre-packaged Manifest V3 browser extension for unpacked developer installation. |
+| **[`SAIF-Setup.exe`](releases/SAIF-Setup.exe)** | Windows 10 / 11 (64-bit) | 19.90 MB | Native Inno Setup single-action installer (Zero UAC, zero proxy, native IDE hook, automatic PATH integration). |
+| **[`saif-extension.zip`](releases/saif-extension.zip)** | Chromium (Chrome, Brave, Edge) | 142.6 KB | Pre-packaged Manifest V3 browser extension for unpacked developer installation. |
 
 ```powershell
 # Quick install: execute user-space installer (no administrator privileges required)
@@ -43,20 +43,53 @@ Detailed release notes and version history are tracked in the [**Changelog**](CH
 
 ## Visual Showcase: Protection in Action
 
-SAIF operates transparently on your local workstation without synthetic testbed mockups. Here is what real-time enforcement looks like in everyday development:
+SAIF operates transparently on your local workstation without synthetic testbed mockups. Here is what real-time enforcement looks like across both **Browser AI Chatrooms** and **Desktop IDE Assistants**:
 
-### 1. In-Page AI Prompt Interception & Local Redaction
-When sensitive credentials, keys, or proprietary data are entered into AI web apps (Claude, ChatGPT, Gemini, DeepSeek), SAIF halts outbound transmission before the request reaches the network. Developers can choose to auto-sanitize tokens locally or trigger an authorized break-glass override:
+### 1. In-Page AI Prompt Interception & Composite Threat Triage (Browser Extension)
+When sensitive credentials, secret keys, or proprietary trade secrets are entered into web AI applications (Claude, ChatGPT, Gemini, DeepSeek), SAIF halts outbound transmission before bytes reach the network. The **v1.0.5 Unified Webview Triage Modal** mounts inside an isolated iframe, displaying composite threat badges (`[REGEX_DLP]` and `[SEMANTIC_ONNX]`), live multiline diff previews (`#diff-preview`), interactive accordions, and instant batch actions (`Enter` / `R` for Redact All, `B` for Break-Glass):
 
 <p align="center">
   <a href="docs/screenshots/inpage_ai_chat_interception.png" title="Click to view full resolution">
-    <img src="docs/screenshots/inpage_ai_chat_interception.png" alt="In-Page AI Chat Interception" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+    <img src="docs/screenshots/inpage_ai_chat_interception.png" alt="In-Page AI Chat Interception with Unified Webview Triage" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
   </a>
   <br>
   <sub><em>(Click image to view full resolution)</em></sub>
 </p>
 
-### 2. Ambient In-Composer Risk Warning
+### 2. Standalone Desktop & IDE Triage Window (Google Antigravity IDE & CLI Hook)
+When coding assistants or terminal CLIs (`saif hook`) evaluate prompts during `PreInvocation`, SAIF spawns a borderless desktop triage window. Developers can review detected violations across multiple corporate verticals, examine attributed sentence spans, inspect real-time masked token tags, and authorize single-trip prompt continuation via in-memory `OverrideLease`:
+
+<p align="center">
+  <a href="docs/screenshots/desktop_triage_modal_full_corpus.png" title="Click to view full resolution">
+    <img src="docs/screenshots/desktop_triage_modal_full_corpus.png" alt="Standalone Desktop Triage Modal Window" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(Click image to view full resolution)</em></sub>
+</p>
+
+### 3. Interactive Accordion Triage & Match-Level Controls
+Need to inspect individual occurrences or carve out specific tokens? Click any category accordion to expand matches, inspect sample tokens, or customize overrides item-by-item:
+
+<p align="center">
+  <a href="docs/screenshots/desktop_triage_modal_accordion.png" title="Click to view full resolution">
+    <img src="docs/screenshots/desktop_triage_modal_accordion.png" alt="Accordion Expanded Triage Controls" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(Click image to view full resolution)</em></sub>
+</p>
+
+### 4. Omnibox (Address Bar) Search Interception with Triage Parity
+Developers frequently paste API tokens, internal URLs, or credentials directly into their browser address bar, inadvertently submitting them to public search engine query logs. SAIF intercepts Omnibox navigation and diverts the tab to `blocked.html`—now featuring 100% triage modal parity with accordion grouping and diff preview:
+
+<p align="center">
+  <a href="docs/screenshots/omnibox_blocked_showcase.png" title="Click to view full resolution">
+    <img src="docs/screenshots/omnibox_blocked_showcase.png" alt="Omnibox Address Bar Search Interception" width="640" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(Click image to view full resolution)</em></sub>
+</p>
+
+### 5. Ambient In-Composer Pre-Flight Risk Warning
 Before submission, SAIF monitors composer input in real-time, displaying a non-intrusive preflight risk badge if sensitive variables or confidential tokens are detected:
 
 <p align="center">
@@ -67,18 +100,7 @@ Before submission, SAIF monitors composer input in real-time, displaying a non-i
   <sub><em>(Click image to view full resolution)</em></sub>
 </p>
 
-### 3. Omnibox (Address Bar) Search Interception
-Developers frequently copy/paste API tokens, internal URLs, or credentials directly into their browser address bar, inadvertently submitting them to public search engine query logs. SAIF intercepts Omnibox navigation at the socket layer and blocks the query before it leaves the machine:
-
-<p align="center">
-  <a href="docs/screenshots/omnibox_blocked_showcase.png" title="Click to view full resolution">
-    <img src="docs/screenshots/omnibox_blocked_showcase.png" alt="Omnibox Address Bar Search Interception" width="640" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
-  </a>
-  <br>
-  <sub><em>(Click image to view full resolution)</em></sub>
-</p>
-
-### 4. Workstation Options Console & Model Triad
+### 6. Workstation Options Console & Model Triad
 Full visibility into active protection engines, algorithmic guards, and hot-swappable local models (`SAIF Light`, `SAIF Neural`, and `SAIF Deep Neural`):
 
 <p align="center">
@@ -89,7 +111,7 @@ Full visibility into active protection engines, algorithmic guards, and hot-swap
   <sub><em>(Click image to view full resolution)</em></sub>
 </p>
 
-### 5. Toolbar Popup Console
+### 7. Toolbar Popup Console
 Instant workstation status, engine latency diagnostics, and 1-click protection snooze controls:
 
 <p align="center">

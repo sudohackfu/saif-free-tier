@@ -1,9 +1,24 @@
 # Frequently Asked Questions (FAQ)
 
 > **Documentation Index**:  
-> [**Overview**](../README.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+> [**Overview**](../README.md) • [**Changelog (v1.0.5)**](../CHANGELOG.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
 
 ---
+
+### Q: Why does SAIF not require installing a self-signed root CA or breaking TLS?
+**A:** In v1.0.4+, SAIF completely eradicated network-level TLS proxying and root CA injection. Instead, SAIF uses direct **Policy Enforcement Points (PEPs)**:
+1. **Browser Web Apps**: Intercepted in-page before transmission via Chromium Manifest V3 Main-World hooks (`window.fetch` / `XMLHttpRequest`).
+2. **Desktop IDEs & CLIs**: Intercepted directly through native lifecycle hooks (Google Antigravity IDE `PreInvocation` and `PreToolUse` protocol via `saif hook`).
+This eliminates the risk of broken Google Cloud certificate pinning (`SSL_PIN_FAILED`) and security warnings across developer tools.
+
+### Q: How does the Antigravity IDE and `agy` CLI hook work?
+**A:** When configured in `%USERPROFILE%\.gemini\config\hooks.json`, Antigravity pipes outbound prompts and tool commands directly to `saif.exe hook` via `stdin`. If clean, `saif.exe` exits in under 5ms and execution proceeds. If sensitive data is detected, `saif.exe` spawns the standalone desktop triage window to let you sanitize, override, or block the turn before any bytes leave your workstation.
+
+### Q: What is the Standalone Desktop Triage Window and how does `OverrideLease` work?
+**A:** For non-browser assistants (such as Antigravity IDE), SAIF spawns an isolated Microsoft Edge webview window (`msedge.exe --app=http://127.0.0.1:18080/triage?session=...`) showing detected violations, accordion drawers, and live diff previews. When you authorize an override or sanitization, SAIF issues an ephemeral in-memory `OverrideLease` token. When the assistant re-submits the approved turn, the daemon recognizes the lease and passes the prompt without prompting you twice.
+
+### Q: How does SAIF handle multi-line paragraph formatting in Gemini and Claude?
+**A:** Web AI composers like Google Gemini use custom `<rich-textarea>` custom elements where Chromium's `innerText` double-inflates block margins. SAIF v1.0.5 reconstructs exact paragraph DOM trees and blank lines (`<p><br></p>`) during in-place prompt sanitization, guaranteeing zero line collapse or character displacement.
 
 ### Q: What happens if `saif.exe` stops running or my laptop restarts?
 **A:** By default, SAIF employs a **fail-open** posture to ensure software developers are never unexpectedly blocked during routine work. If the local daemon is offline or restarting, outbound AI prompts transit normally.
@@ -32,4 +47,4 @@ Then update the target port in the Extension Options Dashboard.
    ```cmd
    "%LOCALAPPDATA%\Programs\SAIF\uninstall.exe" --uninstall
    ```
-This immediately terminates running processes, reverts Windows Internet Settings (`AutoConfigURL`), removes the autostart registry entry, clears environment variables, and removes all program files.
+This terminates running background processes, removes user PATH registrations, deletes the autostart registry entry, and removes all program files cleanly.
