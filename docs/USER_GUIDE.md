@@ -12,31 +12,25 @@ Welcome to the **SAIF Free Community Edition (Release v1.0.5)**! This guide walk
 ## 1. Quick Installation (Windows)
 
 ```mermaid
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'darkMode': true,
-    'background': '#09090b',
-    'mainBkg': '#121217',
-    'nodeBorder': '#27272a',
-    'textColor': '#f4f4f5',
-    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif',
-    'fontSize': '13px',
-    'lineColor': '#38bdf8'
-  }
-}}%%
 flowchart LR
-    A["📥 Download SAIF-Setup.exe"]:::blueNode --> B["⚙️ Run Installer (User Space)"]:::slateNode
-    B --> C["⚡ Daemon Starts (127.0.0.1:18080)"]:::purpleNode
-    B --> D["📂 Extension Folder Opened"]:::slateNode
-    D --> E["🧩 Load Unpacked in Browser"]:::cyanNode
-    C & E --> F["🛡️ Zero-Trust Protection Active!"]:::greenNode
+    A["📥 Download SAIF-Setup.exe"] --> B["⚙️ Run Installer (User Space)"]
+    B --> C["⚡ Daemon Starts (127.0.0.1:18080)"]
+    B --> D["📂 Extension Folder Opened"]
+    D --> E["🧩 Load Unpacked in Browser"]
+    C --> F["🛡️ Zero-Trust Protection Active!"]
+    E --> F
 
-    classDef blueNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#60a5fa,rx:8px,ry:8px;
-    classDef slateNode fill:#18181b,stroke:#3f3f46,stroke-width:1.5px,color:#d4d4d8,rx:8px,ry:8px;
-    classDef cyanNode fill:#083344,stroke:#06b6d4,stroke-width:2px,color:#22d3ee,rx:8px,ry:8px;
-    classDef purpleNode fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#c084fc,rx:8px,ry:8px;
-    classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399,rx:8px,ry:8px;
+    classDef blueNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#60a5fa;
+    classDef slateNode fill:#18181b,stroke:#3f3f46,stroke-width:1.5px,color:#d4d4d8;
+    classDef cyanNode fill:#083344,stroke:#06b6d4,stroke-width:2px,color:#22d3ee;
+    classDef purpleNode fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#c084fc;
+    classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399;
+
+    class A blueNode;
+    class B,D slateNode;
+    class C purpleNode;
+    class E cyanNode;
+    class F greenNode;
 ```
 
 1. Download **[`SAIF-Setup.exe`](../releases/SAIF-Setup.exe)** (Release v1.0.5, 19.90 MB).

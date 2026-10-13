@@ -22,19 +22,6 @@ This document provides visual architectural specifications and data flow models 
 SAIF operates entirely on the local developer workstation. Zero telemetry, raw prompt text, or audit logs ever leave the local machine.
 
 ```mermaid
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'darkMode': true,
-    'background': '#09090b',
-    'mainBkg': '#121217',
-    'nodeBorder': '#27272a',
-    'textColor': '#f4f4f5',
-    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif',
-    'fontSize': '13px',
-    'lineColor': '#38bdf8'
-  }
-}}%%
 flowchart TB
     subgraph Workstation ["💻 Developer Workstation Boundary"]
         subgraph Browser ["🌐 Modern Web Browser (Chrome / Edge / Brave)"]
@@ -92,15 +79,15 @@ flowchart TB
     UI -.->|"Allowed Clean Prompts Egress Directly"| CloudAI
     MODAL -.->|"Blocked Prompts Terminated Locally"| Workstation
 
-    classDef default fill:#121217,stroke:#27272a,stroke-width:1.5px,color:#f4f4f5,rx:8px,ry:8px;
-    classDef blueNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#60a5fa,rx:8px,ry:8px;
-    classDef cyanNode fill:#083344,stroke:#06b6d4,stroke-width:2px,color:#22d3ee,rx:8px,ry:8px;
-    classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399,rx:8px,ry:8px;
-    classDef redNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#f87171,rx:8px,ry:8px;
-    classDef amberNode fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fbbf24,rx:8px,ry:8px;
-    classDef purpleNode fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#c084fc,rx:8px,ry:8px;
-    classDef slateNode fill:#18181b,stroke:#3f3f46,stroke-width:1.5px,color:#d4d4d8,rx:8px,ry:8px;
-    classDef cloudNode fill:#141416,stroke:#52525b,stroke-width:1px,color:#a1a1aa,rx:6px,ry:6px;
+    classDef default fill:#121217,stroke:#27272a,stroke-width:1.5px,color:#f4f4f5;
+    classDef blueNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#60a5fa;
+    classDef cyanNode fill:#083344,stroke:#06b6d4,stroke-width:2px,color:#22d3ee;
+    classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399;
+    classDef redNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#f87171;
+    classDef amberNode fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fbbf24;
+    classDef purpleNode fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#c084fc;
+    classDef slateNode fill:#18181b,stroke:#3f3f46,stroke-width:1.5px,color:#d4d4d8;
+    classDef cloudNode fill:#141416,stroke:#52525b,stroke-width:1px,color:#a1a1aa;
 
     style Workstation fill:#09090b,stroke:#2563eb,stroke-width:2px,color:#60a5fa;
     style Browser fill:#0f1117,stroke:#27272a,stroke-width:1.5px,color:#e4e4e7;
@@ -115,29 +102,6 @@ flowchart TB
 The sequence below illustrates the life of an outbound prompt submission, from initial typing through local evaluation, blocking, and optional break-glass developer override.
 
 ```mermaid
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'darkMode': true,
-    'background': '#09090b',
-    'actorBkg': '#18181b',
-    'actorBorder': '#3b82f6',
-    'actorTextColor': '#60a5fa',
-    'actorLineColor': '#38bdf8',
-    'signalColor': '#38bdf8',
-    'signalTextColor': '#e4e4e7',
-    'noteBkgColor': '#18181b',
-    'noteBorderColor': '#3b82f6',
-    'noteTextColor': '#f4f4f5',
-    'labelBoxBkgColor': '#18181b',
-    'labelBoxBorderColor': '#27272a',
-    'labelTextColor': '#f4f4f5',
-    'loopTextColor': '#38bdf8',
-    'altSectionBkgColor': '#121217',
-    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif',
-    'fontSize': '13px'
-  }
-}}%%
 sequenceDiagram
     autonumber
     actor Dev as 👨‍💻 Developer
@@ -207,19 +171,6 @@ SAIF combines deterministic regular expressions, mathematical checksums, and neu
 </p>
 
 ```mermaid
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'darkMode': true,
-    'background': '#09090b',
-    'mainBkg': '#121217',
-    'nodeBorder': '#27272a',
-    'textColor': '#f4f4f5',
-    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif',
-    'fontSize': '13px',
-    'lineColor': '#38bdf8'
-  }
-}}%%
 flowchart TD
     START(["📥 Inbound Raw Prompt Payload"]):::blueNode --> NORM["Syntactic Normalization Engine"]:::amberNode
 
@@ -231,15 +182,23 @@ flowchart TD
         NORM --> AST["AST Literal & Code Unrolling"]:::amberNode
     end
 
-    B64 & UNI & LEET & URLD & AST --> TIER1{"Tier 1: High-Speed DLP"}:::cyanNode
+    TIER1{"Tier 1: High-Speed DLP"}:::cyanNode
+    B64 --> TIER1
+    UNI --> TIER1
+    LEET --> TIER1
+    URLD --> TIER1
+    AST --> TIER1
 
     subgraph FastPath ["Deterministic Regex & Trie Layer (<1ms)"]
         TIER1 -->|"Known Secret Pattern"| REGEX["27+ Pre-Compiled Patterns"]:::cyanNode
         TIER1 -->|"Keyword / Entity Token"| AHO["Aho-Corasick Token Index"]:::cyanNode
     end
 
-    REGEX & AHO -->|"Definitive Pattern Match"| CEDAR
-    REGEX & AHO -->|"No Definite Pattern Match"| TIER2{"Tier 2: Algorithmic Verification"}:::purpleNode
+    TIER2{"Tier 2: Algorithmic Verification"}:::purpleNode
+    REGEX -->|"Pattern Match"| CEDAR
+    AHO -->|"Token Match"| CEDAR
+    REGEX -->|"No Pattern Match"| TIER2
+    AHO -->|"No Token Match"| TIER2
 
     subgraph MathLayer ["Mathematical & Entropy Checksums (<3ms)"]
         TIER2 --> SHANNON["Shannon Entropy Filter (H >= 3.2)"]:::purpleNode
@@ -247,8 +206,13 @@ flowchart TD
         TIER2 --> SOV["19-Country Sovereign ID Algorithms"]:::purpleNode
     end
 
-    SHANNON & LUHN & SOV -->|"Algorithm Confirmed"| CEDAR
-    SHANNON & LUHN & SOV -->|"Ambiguous / Context Dependent"| TIER3{"Tier 3: ONNX Neural Cascade"}:::purpleNode
+    TIER3{"Tier 3: ONNX Neural Cascade"}:::purpleNode
+    SHANNON -->|"Confirmed"| CEDAR
+    LUHN -->|"Confirmed"| CEDAR
+    SOV -->|"Confirmed"| CEDAR
+    SHANNON -->|"Context Dependent"| TIER3
+    LUHN -->|"Context Dependent"| TIER3
+    SOV -->|"Context Dependent"| TIER3
 
     subgraph NeuralLayer ["Local ONNX Semantic Transformer (<10ms)"]
         TIER3 --> EMBED["Local Tokenizer & Embedding Engine"]:::purpleNode
@@ -269,13 +233,13 @@ flowchart TD
     ACT_ALLOW --> OUT_ALLOW(["🚀 Outbound Transit to AI"]):::greenNode
     ACT_REDACT --> OUT_REDACT(["✨ Sanitized Payload Delivered"]):::amberNode
 
-    classDef default fill:#121217,stroke:#27272a,stroke-width:1.5px,color:#f4f4f5,rx:8px,ry:8px;
-    classDef blueNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#60a5fa,rx:8px,ry:8px;
-    classDef cyanNode fill:#083344,stroke:#06b6d4,stroke-width:2px,color:#22d3ee,rx:8px,ry:8px;
-    classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399,rx:8px,ry:8px;
-    classDef redNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#f87171,rx:8px,ry:8px;
-    classDef amberNode fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fbbf24,rx:8px,ry:8px;
-    classDef purpleNode fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#c084fc,rx:8px,ry:8px;
+    classDef default fill:#121217,stroke:#27272a,stroke-width:1.5px,color:#f4f4f5;
+    classDef blueNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#60a5fa;
+    classDef cyanNode fill:#083344,stroke:#06b6d4,stroke-width:2px,color:#22d3ee;
+    classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399;
+    classDef redNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#f87171;
+    classDef amberNode fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fbbf24;
+    classDef purpleNode fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#c084fc;
 
     style Normalization fill:#0f1117,stroke:#27272a,stroke-width:1px,color:#fbbf24;
     style FastPath fill:#0f1117,stroke:#27272a,stroke-width:1px,color:#22d3ee;
@@ -291,24 +255,6 @@ flowchart TD
 The state diagram below models the operational states of the SAIF workstation sensor, illustrating transitions between active protection, blocking, override authorization, and developer snoozing.
 
 ```mermaid
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'darkMode': true,
-    'background': '#09090b',
-    'stateBkg': '#121217',
-    'stateBorder': '#3b82f6',
-    'stateTextColor': '#60a5fa',
-    'innerStateBkg': '#09090b',
-    'innerStateBorder': '#27272a',
-    'innerStateTextColor': '#f4f4f5',
-    'lineColor': '#38bdf8',
-    'transitionColor': '#38bdf8',
-    'transitionLabelColor': '#e4e4e7',
-    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif',
-    'fontSize': '13px'
-  }
-}}%%
 stateDiagram-v2
     [*] --> ActiveMonitoring : Daemon Online & Sensor Active
 
@@ -360,7 +306,7 @@ stateDiagram-v2
     ManualResume --> ActiveMonitoring : Protection Resumed Immediately
 
     ActiveMonitoring --> FailOpenFallback : Daemon Process Offline
-    FailOpenFallback --> ActiveMonitoring : Heartbeat Restored (127.0.0.1:44321)
+    FailOpenFallback --> ActiveMonitoring : Heartbeat Restored (127.0.0.1:18080)
 ```
 
 ---
@@ -370,19 +316,6 @@ stateDiagram-v2
 Attackers and complex developer payloads frequently use nested encoding or AST wrappers to bypass naive string matching. SAIF unrolls these layers before semantic evaluation.
 
 ```mermaid
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'darkMode': true,
-    'background': '#09090b',
-    'mainBkg': '#121217',
-    'nodeBorder': '#27272a',
-    'textColor': '#f4f4f5',
-    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif',
-    'fontSize': '13px',
-    'lineColor': '#38bdf8'
-  }
-}}%%
 flowchart LR
     INPUT["🚨 Raw Adversarial Prompt Payload"]:::redNode --> DETECT{"Payload Inspection"}:::blueNode
 
@@ -403,13 +336,13 @@ flowchart LR
 
     CANON --> ENGINE["⚡ SAIF Local Triage Engine"]:::purpleNode
 
-    classDef default fill:#121217,stroke:#27272a,stroke-width:1.5px,color:#f4f4f5,rx:8px,ry:8px;
-    classDef blueNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#60a5fa,rx:8px,ry:8px;
-    classDef cyanNode fill:#083344,stroke:#06b6d4,stroke-width:2px,color:#22d3ee,rx:8px,ry:8px;
-    classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399,rx:8px,ry:8px;
-    classDef redNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#f87171,rx:8px,ry:8px;
-    classDef amberNode fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fbbf24,rx:8px,ry:8px;
-    classDef purpleNode fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#c084fc,rx:8px,ry:8px;
+    classDef default fill:#121217,stroke:#27272a,stroke-width:1.5px,color:#f4f4f5;
+    classDef blueNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#60a5fa;
+    classDef cyanNode fill:#083344,stroke:#06b6d4,stroke-width:2px,color:#22d3ee;
+    classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399;
+    classDef redNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#f87171;
+    classDef amberNode fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fbbf24;
+    classDef purpleNode fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#c084fc;
 ```
 
 ---
@@ -418,7 +351,7 @@ flowchart LR
 
 | Invariant | Guarantee | Technical Implementation |
 | :--- | :--- | :--- |
-| **Zero Cloud Egress** | Prompts, regex scans, and neural embeddings never leave workstation memory | 100% local execution in `saif.exe` binding to `127.0.0.1:44321` |
+| **Zero Cloud Egress** | Prompts, regex scans, and neural embeddings never leave workstation memory | 100% local execution in `saif.exe` binding to `127.0.0.1:18080` |
 | **Deterministic Fail-Open/Fail-Closed** | Configurable fail posture ensures developers are never unexpectedly blocked | Local heartbeat sensor with configurable posture toggle in dashboard |
 | **Sub-15ms Latency** | Interception overhead is imperceptible during daily coding and AI chat | Multi-tier cascade: regex (<1ms) -> Shannon (<3ms) -> ONNX (<10ms) |
 | **Audit Nonce Integrity** | Break-glass overrides cannot be forged or replayed | Single-use cryptographic UUID nonces generated by local daemon |

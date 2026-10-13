@@ -33,25 +33,12 @@ SAIF deploys a dual-tier architecture operating in workstation user space:
 - **Browser Sensor**: A Manifest V3 extension that intercepts outbound prompt payloads before network egress, enforcing zero-trust pre-flight authorization.
 
 ```mermaid
-%%{init: {
-  'theme': 'base',
-  'themeVariables': {
-    'darkMode': true,
-    'background': '#09090b',
-    'mainBkg': '#121217',
-    'nodeBorder': '#27272a',
-    'textColor': '#f4f4f5',
-    'fontFamily': 'Inter, system-ui, -apple-system, sans-serif',
-    'fontSize': '13px',
-    'lineColor': '#38bdf8'
-  }
-}}%%
 flowchart TD
     UserPrompt["Developer Enters Prompt in Web AI UI<br/><b>ChatGPT, Claude, Gemini, DeepSeek</b>"]:::blueNode
     Sensor["Browser Extension Interceptor<br/><b>Main-World DOM Hook</b>"]:::cyanNode
     UserPrompt --> Sensor
     
-    Sensor --> Preflight["Pre-Flight POST /evaluate<br/><b>http://127.0.0.1:44321</b>"]:::purpleNode
+    Sensor --> Preflight["Pre-Flight POST /evaluate<br/><b>http://127.0.0.1:18080</b>"]:::purpleNode
     
     subgraph WorkstationDaemon ["⚡ SAIF Workstation Daemon (saif.exe)"]
         Preproc["Syntactic Normalizer & Unfolder<br/>• Base64 & Hex Decoding<br/>• Leetspeak & Homoglyphs<br/>• AST Template Unrolling"]:::amberNode
@@ -76,13 +63,13 @@ flowchart TD
     FinalVerdict -->|"Violation Found"| ModalBlock["Sensor Blocks Egress & Displays In-Page Shield Modal"]:::redNode
     FinalVerdict -->|"Clean"| SafePass["Prompt Allowed to Transit Directly to LLM"]:::greenNode
 
-    classDef blueNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#60a5fa,rx:8px,ry:8px;
-    classDef cyanNode fill:#083344,stroke:#06b6d4,stroke-width:2px,color:#22d3ee,rx:8px,ry:8px;
-    classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399,rx:8px,ry:8px;
-    classDef redNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#f87171,rx:8px,ry:8px;
-    classDef amberNode fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fbbf24,rx:8px,ry:8px;
-    classDef purpleNode fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#c084fc,rx:8px,ry:8px;
-    classDef slateNode fill:#18181b,stroke:#3f3f46,stroke-width:1.5px,color:#d4d4d8,rx:8px,ry:8px;
+    classDef blueNode fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#60a5fa;
+    classDef cyanNode fill:#083344,stroke:#06b6d4,stroke-width:2px,color:#22d3ee;
+    classDef greenNode fill:#022c22,stroke:#10b981,stroke-width:2px,color:#34d399;
+    classDef redNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#f87171;
+    classDef amberNode fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fbbf24;
+    classDef purpleNode fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#c084fc;
+    classDef slateNode fill:#18181b,stroke:#3f3f46,stroke-width:1.5px,color:#d4d4d8;
 
     style WorkstationDaemon fill:#0f1117,stroke:#8b5cf6,stroke-width:1.5px,color:#c084fc;
     style Models fill:#09090b,stroke:#27272a,stroke-width:1px,color:#a1a1aa;
