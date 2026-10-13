@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.5] - 2026-10-13
+
+### Added
+- **Unified Webview Triage Modal (`triage.html` / `triage.js`)**:
+  - Replaces legacy imperative DOM modal injection with an isolated, high-DPI iframe webview matching the desktop triage experience.
+  - Multi-threat composite extraction rendering distinct badges for deterministic regex DLP matches (`REGEX_DLP`) and on-device ONNX semantic policy violations (`SEMANTIC_ONNX`).
+  - Interactive accordion match inspection with live multiline diff preview (`#diff-preview`) and masked token tags.
+  - Batch action presets for instant Redact All (`R`) and Break-Glass (`B`), plus granular per-violation overrides.
+- **Top-Level Omnibox Navigation Triage Parity (`blocked.html`)**:
+  - Fully modernizes the standalone blocked warning page to adopt the exact same Composite Threat Triage modal UI as `triage.html`.
+  - Enforces synchronous and asynchronous URL diversion on semantic address bar queries to prevent confidential prompt leaks into search engine query logs.
+- **Standalone Desktop Triage & Override Lease**:
+  - Out-of-browser triage session support via `POST /api/v1/triage/create` and standalone window launch.
+  - Bounded in-memory `OverrideLease` tracking allowing seamless prompt resubmission without repeat blocking during triage turn.
+  - Interval-containment algorithm (`applyMultiTokenRedaction`) merging overlapping spans and subsuming inner regex tokens inside semantic sentence boundaries.
+
+### Fixed
+- **ContentEditable & Rich-Textarea Line-Count Fidelity**:
+  - Reconstructed exact paragraph layout and blank lines (`<p><br></p>`) in rich-text input frameworks (such as Google Gemini's `<rich-textarea>`), eliminating line collapse and character drift during prompt sanitization.
+- **Verbatim Paste Preservation**:
+  - Deprecated premature in-place paste mutation to preserve the full raw prompt for submission-time threat extraction and triage context.
+
+---
+
 ## [1.0.4] - 2026-10-09
 
 ### Added
