@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.6] - 2026-10-13
+
+### Added
+- **Single-Trip "Hash and Burn" Override Lease Lifecycle**:
+  - Implemented single-trip burn-on-read override protection across both the Chromium browser extension and the native IDE assistant proxy daemon (`saif.exe`).
+  - **Two-Gate Asynchronous IDE Lifecycle**: Gate 1 (`POST /api/v1/hook`) validates the in-memory lease and approves the assistant turn without premature destruction (`HookApproved = true`). Gate 2 (wire proxy requests `/v1/chat/completions`, `/v1beta/models/*`, `/v1/messages`) checks the lease, streams the request upstream, spools an `OVERRIDDEN` audit record, and burns the lease on read.
+  - **Browser Extension Single-Trip Burning**: Break-Glass authorization and granular item-level triage overrides register in-page, background, and interceptor leases. Upon outbound transmission to external AI endpoints, the interceptor consumes the lease and dispatches `__SAIF_BURN_OVERRIDE__`, ensuring any subsequent identical submission immediately triggers security block enforcement.
+- **Automated Verification Suites**:
+  - Added deterministic two-gate proxy lifecycle tests in `apps/agent/internal/proxy/hook_test.go`.
+  - Added full end-to-end Gemini rich-textarea Playwright tests in `apps/sensors/e2e/gemini_composer.spec.ts` asserting single-trip burn for both Break-Glass and Item-Level overrides.
+
+---
+
 ## [1.0.5] - 2026-10-13
 
 ### Added

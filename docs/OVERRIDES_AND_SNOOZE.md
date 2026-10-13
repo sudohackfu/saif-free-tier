@@ -1,7 +1,7 @@
 # SAIF Overrides, Snoozing & Local Audit History
 
 > **Documentation Index**:  
-> [**Overview**](../README.md) • [**Changelog (v1.0.5)**](../CHANGELOG.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
+> [**Overview**](../README.md) • [**Changelog (v1.0.6)**](../CHANGELOG.md) • [**Architecture Diagrams**](ARCHITECTURE.md) • [**User Guide**](USER_GUIDE.md) • [**Benchmark Whitepaper**](BENCHMARK.md) • [**Rule Catalog**](RULE_CATALOG.md) • [**Overrides & Snoozing**](OVERRIDES_AND_SNOOZE.md) • [**FAQ**](FAQ.md) • [**Benchmark Suite**](../benchmark/README.md) • [**Empirical Report**](../BENCHMARK_REPORT.md) • [**Community EULA**](../EULA.md) • [**MIT License**](../LICENSE.md)
 
 ---
 
@@ -11,7 +11,7 @@ SAIF is designed for **developer velocity**. Security controls should never bloc
 
 ## 1. Unified Triage & Override Decision Matrix
 
-When SAIF intercepts an outbound prompt—either inside a web AI chatroom via the browser extension or out-of-browser via the Antigravity IDE hook—it presents the **v1.0.5 Composite Threat Triage Modal**:
+When SAIF intercepts an outbound prompt—either inside a web AI chatroom via the browser extension or out-of-browser via the Antigravity IDE hook—it presents the **v1.0.6 Composite Threat Triage Modal**:
 
 <p align="center">
   <a href="screenshots/inpage_ai_chat_interception.png" title="Click to view full resolution">
@@ -28,8 +28,8 @@ Developers have four distinct options when a violation is flagged:
 | Remediation Action | Keyboard / Hotkey | Operational Behavior | Single-Trip Guarantee |
 | :--- | :---: | :--- | :--- |
 | **Sanitize Prompt (Redact All)** | **`Enter` / `R`** | Replaces all detected violations in descending character offset order with masked tags (e.g. `[REDACTED: pii_national_id]`). Preserves exact multi-line paragraph layout (`<p><br></p>`). | Issues `OverrideLease` for sanitized hash; bypasses redundant scans on resubmit. |
-| **Break-Glass Emergency Override** | **`B`** | Logs an audited bypass event locally and permits the raw prompt to egress to the AI service. | Issues single-trip `OverrideLease` to prevent re-blocking on turn dispatch. |
-| **Granular Accordion Overrides** | **Click Accordion** | Expand individual rule drawers to inspect matched text spans, sample tokens, and toggle specific matches on or off individually before applying. | Customized mask applied; un-checked tokens preserved raw. |
+| **Break-Glass Emergency Override** | **`B`** | Logs an audited bypass event locally and permits the raw prompt to egress to the AI service. | Issues single-trip `OverrideLease` to prevent re-blocking on turn dispatch; burned on outbound transmission. |
+| **Granular Item-Level Overrides** | **Click Accordion / Item Radio** | Expand individual rule drawers to inspect matched text spans, sample tokens, and toggle specific matches on or off individually before applying. | Unredacted tokens are preserved under an active item-level override lease; burned on outbound transmission. |
 | **Cancel / Block** | **`Esc`** | Closes the modal. The original text remains safe on the workstation without transmitting any bytes upstream. | Prompt remains un-transmitted. |
 
 <p align="center">
@@ -40,13 +40,14 @@ Developers have four distinct options when a violation is flagged:
   <sub><em>(Desktop Triage Modal: Granular Accordion Controls & Live Diff Preview)</em></sub>
 </p>
 
-### How the Single-Trip Override Lease Works
-1. When you select **Break-Glass** or **Sanitize Prompt**, SAIF generates an ephemeral, in-memory **`OverrideLease`** token bound to the specific prompt hash or session ID.
-2. The browser extension or IDE hook immediately dispatches the turn.
-3. As the outgoing HTTP request leaves the workstation, the local daemon (`saif.exe :18080`) checks the active lease ring buffer:
-   - If an active lease matches the prompt hash, inspection is skipped and the request transits smoothly.
-   - The lease is consumed upon transmission, ensuring zero leakage on subsequent turns.
-4. The override or redaction action is committed to your local workstation audit log (`%LOCALAPPDATA%\saif\spool.db`).
+### How the Single-Trip Override Lease Works ("Hash and Burn")
+1. When you select **Break-Glass** or **Granular Item-Level Override**, SAIF generates an ephemeral, in-memory **`OverrideLease`** token bound to the specific prompt hash or session ID.
+2. In the browser extension, the lease is tracked simultaneously across the isolated content script (`inPageOverriddenPrompts`), the background service worker (`overrideLeases`), and the Main-World network interceptor (`overriddenPrompts`).
+3. For native IDE assistants (`saif.exe`), the override is managed across a sequential two-gate protocol:
+   - **Gate 1 (`POST /api/v1/hook`)**: Turn preflight validation via `ValidateOverrideLease`. The turn is approved without destroying the lease (`HookApproved = true`).
+   - **Gate 2 (Wire Proxy Request)**: Upstream wire transmission via `CheckAndConsumeOverrideLease`. The request is relayed to the external LLM provider, an `OVERRIDDEN` event is logged to the local spooler, and the lease is burned on read.
+4. **Single-Trip Burn-on-Read Guarantee**: As soon as the outbound request transits the network, the lease is destroyed. If the exact same sensitive prompt is submitted a second time, the firewall immediately re-blocks it.
+5. The override or redaction action is committed to your local workstation audit log (`%LOCALAPPDATA%\saif\spool.db`).
 
 ---
 
