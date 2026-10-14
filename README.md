@@ -75,7 +75,15 @@ Need to inspect individual occurrences or carve out specific tokens? Click any c
     <img src="docs/screenshots/desktop_triage_modal_accordion.png" alt="Accordion Expanded Triage Controls" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
   </a>
   <br>
-  <sub><em>(Click image to view full resolution)</em></sub>
+  <sub><em>(Desktop Triage Modal: Granular Accordion Controls & Live Diff Preview)</em></sub>
+</p>
+
+<p align="center">
+  <a href="docs/screenshots/item_level_override_triage.png" title="Click to view full resolution">
+    <img src="docs/screenshots/item_level_override_triage.png" alt="In-Browser Item-Level Override Triage with Live Diff Preview" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(In-Browser Item-Level Override Triage: Selective Token Exclusions & Real-Time Diff Preview)</em></sub>
 </p>
 
 ### 4. Omnibox (Address Bar) Search Interception with Triage Parity

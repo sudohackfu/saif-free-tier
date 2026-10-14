@@ -40,6 +40,14 @@ Developers have four distinct options when a violation is flagged:
   <sub><em>(Desktop Triage Modal: Granular Accordion Controls & Live Diff Preview)</em></sub>
 </p>
 
+<p align="center">
+  <a href="screenshots/item_level_override_triage.png" title="Click to view full resolution">
+    <img src="screenshots/item_level_override_triage.png" alt="In-Browser Item-Level Override Triage with Live Diff Preview" width="680" style="max-width: 100%; border-radius: 8px; border: 1px solid #334155; box-shadow: 0 4px 16px rgba(0,0,0,0.35);" />
+  </a>
+  <br>
+  <sub><em>(In-Browser Item-Level Override Triage: Selective Token Exclusions & Real-Time Diff Preview)</em></sub>
+</p>
+
 ### How the Single-Trip Override Lease Works ("Hash and Burn")
 1. When you select **Break-Glass** or **Granular Item-Level Override**, SAIF generates an ephemeral, in-memory **`OverrideLease`** token bound to the specific prompt hash or session ID.
 2. In the browser extension, the lease is tracked simultaneously across the isolated content script (`inPageOverriddenPrompts`), the background service worker (`overrideLeases`), and the Main-World network interceptor (`overriddenPrompts`).
